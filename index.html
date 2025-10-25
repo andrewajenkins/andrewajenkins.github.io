@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andrew Jenkins - AI Test Platform Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        /* Modal styles */
+        .modal {
+            transition: opacity 0.25s ease;
+        }
+        .modal-content {
+            transition: transform 0.25s ease;
+        }
+        /* Hide scrollbar when modal is open */
+        body.modal-open {
+            overflow: hidden;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-dark': '#0f172a', // Slate 900
+                        'brand-light': '#1e293b', // Slate 800
+                        'brand-accent': '#38bdf8', // Sky 400
+                        'brand-text': '#e2e8f0', // Slate 200
+                        'brand-subtext': '#94a3b8', // Slate 400
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-brand-dark text-brand-text antialiased">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 bg-brand-dark/80 backdrop-blur-md z-50 border-b border-brand-light/50">
+        <!-- ... existing header code ... -->
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold text-white">Andrew Jenkins</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="#about" class="text-brand-subtext hover:text-white transition-colors">About</a>
+                <a href="#projects" class="text-brand-subtext hover:text-white transition-colors">Projects</a>
+                <a href="#experience" class="text-brand-subtext hover:text-white transition-colors">Experience</a>
+                <a href="#contact" class="text-brand-subtext hover:text-white transition-colors">Contact</a>
+            </div>
+            <button id="mobile-menu-btn" class="md:hidden text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-2">
+            <a href="#about" class="block text-brand-subtext hover:text-white transition-colors">About</a>
+            <a href="#projects" class="block text-brand-subtext hover:text-white transition-colors">Projects</a>
+            <a href="#experience" class="block text-brand-subtext hover:text-white transition-colors">Experience</a>
+            <a href="#contact" class="block text-brand-subtext hover:text-white transition-colors">Contact</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 pt-24">
+
+        <!-- Hero Section -->
+        <section id="hero" class="py-20 md:py-32 text-center animate-fade-in-up" style="animation-delay: 100ms;">
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Andrew Jenkins</h1>
+            <h2 class="text-2xl md:text-3xl font-medium text-gradient bg-gradient-to-r from-cyan-400 to-brand-accent mb-8">
+                Senior AI Test Platform Engineer
+            </h2>
+            <p class="max-w-3xl mx-auto text-lg text-brand-subtext mb-10">
+                Architecting production-grade, AI-native test automation platforms using RAG and LLMs to scale teams, reduce test creation time by 80%, and enable conversational test generation.
+            </p>
+            <!-- Updated Hero Buttons -->
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="#projects" class="w-full sm:w-auto bg-brand-accent text-white font-semibold px-8 py-3 rounded-lg hover:bg-sky-500 transition-colors shadow-lg shadow-sky-500/20">
+                    View My Work
+                </a>
+                <!-- NOTE: You will need to upload your resume (e.g., Andrew-Jenkins-Resume.pdf) and replace the href path -->
+                <a href="./Andrew-Jenkins-Resume.pdf" download="Andrew-Jenkins-Resume.pdf" class="w-full sm:w-auto bg-brand-light/50 text-brand-text font-semibold px-8 py-3 rounded-lg hover:bg-brand-light transition-colors border border-brand-light">
+                    Download Resume
+                </a>
+            </div>
+        </section>
+
+        <!-- About & Skills Section -->
+        <section id="about" class="py-20 border-t border-brand-light/50 animate-fade-in-up" style="animation-delay: 300ms;">
+            <!-- ... existing about section ... -->
+            <h2 class="text-3xl font-bold text-center text-white mb-12">About & Core Competencies</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- AI Platform Engineering -->
+                <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50 shadow-lg">
+                    <h3 class="text-xl font-semibold text-white mb-3">AI Platform Engineering</h3>
+                    <ul class="space-y-2 text-brand-subtext list-inside">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-brand-accent mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            RAG Systems & Context Management
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-brand-accent mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            LLM Integration (Claude Code)
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-brand-accent mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            Prompt Engineering
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Platform Architecture -->
+                <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50 shadow-lg">
+                    <h3 class="text-xl font-semibold text-white mb-3">Platform Architecture</h3>
+                    <ul class="space-y-2 text-brand-subtext list-inside">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-brand-accent mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            Test Infrastructure Design
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-brand-accent mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            CI/CD Pipeline Architecture
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-brand-accent mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            Full-Stack Development
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Languages & Tools -->
+                <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50 shadow-lg md:col-span-2 lg:col-span-1">
+                    <h3 class="text-xl font-semibold text-white mb-3">Languages & Infrastructure</h3>
+                    <ul class="space-y-2 text-brand-subtext list-inside">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-brand-accent mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            Python, Django, TypeScript, Angular
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-brand-accent mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            Playwright, Selenium, PyTest
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-brand-accent mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            Docker, Jenkins, AWS (ECS, ECR)
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Projects Section -->
+        <section id="projects" class="py-20 border-t border-brand-light/50 animate-fade-in-up" style="animation-delay: 500ms;">
+            <h2 class="text-3xl font-bold text-center text-white mb-16">Key Achievements & Projects</h2>
+            <div class="space-y-12">
+
+                <!-- Project 1: TAP -->
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-8 items-center">
+                    <div class="md:col-span-3">
+                        <h3 class="text-2xl font-semibold text-white mb-3">AI-Powered Test Automation Platform (TAP)</h3>
+                        <p class="text-brand-subtext mb-4">
+                            Architected and built a production-grade internal RAG-based system using Claude Code that generates end-to-end tests from natural language. This platform reduced test creation time from days to minutes through a conversational interface.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <!-- ... existing tags ... -->
+                            <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-3 py-1 rounded-full">RAG</span>
+                            <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-3 py-1 rounded-full">LLM</span>
+                            <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-3 py-1 rounded-full">Claude Code</span>
+                            <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-3 py-1 rounded-full">Microservices</span>
+                            <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-3 py-1 rounded-full">Playwright</span>
+                        </div>
+                        <button onclick="openModal('modal-tap')" class="text-brand-accent font-semibold hover:text-sky-500 transition-colors">
+                            Learn More &rarr;
+                        </button>
+                    </div>
+                    <div class="md:col-span-2">
+                        <img src="https://placehold.co/500x300/1e293b/94a3b8?text=AI+Test+Platform&font=inter" alt="AI Test Platform" class="rounded-lg shadow-xl border border-brand-light/50">
+                    </div>
+                </div>
+
+                <!-- Project 2: Context Engine -->
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-8 items-center">
+                    <div class="md:col-span-2 md:order-last">
+                        <img src="https://placehold.co/500x300/1e293b/94a3b8?text=Context+Engine&font=inter" alt="Clinical Trials Context Engine" class="rounded-lg shadow-xl border border-brand-light/50">
+                    </div>
+                    <div class="md:col-span-3">
+                        <h3 class="text-2xl font-semibold text-white mb-3">Clinical Trials Context Engine</h3>
+                        <p class="text-brand-subtext mb-4">
+                            Built the RAG knowledge base for TAP by ingesting the application's Django models and existing test patterns. This enables context-aware test generation specific to the complex clinical trials domain.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <!-- ... existing tags ... -->
+                            <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-3 py-1 rounded-full">RAG</span>
+                            <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-3 py-1 rounded-full">Knowledge Base</span>
+                            <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-3 py-1 rounded-full">Django</span>
+                            <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-3 py-1 rounded-full">Context-Aware AI</span>
+                        </div>
+                        <button onclick="openModal('modal-context')" class="text-brand-accent font-semibold hover:text-sky-500 transition-colors">
+                            Learn More &rarr;
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 3: E2E Tracker -->
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-8 items-center">
+                    <div class="md:col-span-3">
+                        <h3 class="text-2xl font-semibold text-white mb-3">Team Efficiency Infrastructure (E2E Tracker)</h3>
+                        <p class="text-brand-subtext mb-4">
+                            Created a full-stack website (MongoDB, Angular, Django) that automated flaky test identification and analysis. This tool reduced manual monitoring from 40+ hours per week to under 3.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <!-- ... existing tags ... -->
+                            <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-3 py-1 rounded-full">Full-Stack</span>
+                            <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-3 py-1 rounded-full">MongoDB</span>
+                            <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-3 py-1 rounded-full">Angular</span>
+                            <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-3 py-1 rounded-full">Automation</span>
+                            <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-3 py-1 rounded-full">Analytics</span>
+                        </div>
+                         <button onclick="openModal('modal-tracker')" class="text-brand-accent font-semibold hover:text-sky-500 transition-colors">
+                            Learn More &rarr;
+                        </button>
+                    </div>
+                    <div class="md:col-span-2">
+                         <img src="https://placehold.co/500x300/1e293b/94a3b8?text=E2E+Tracker&font=inter" alt="E2E Tracker" class="rounded-lg shadow-xl border border-brand-light/50">
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-20 border-t border-brand-light/50 animate-fade-in-up" style="animation-delay: 700ms;">
+            <!-- ... existing experience section ... -->
+            <h2 class="text-3xl font-bold text-center text-white mb-16">Professional Experience</h2>
+            
+            <div class="relative max-w-3xl mx-auto pl-8 border-l-2 border-brand-light/30">
+                <!-- Timeline Item 1 -->
+                <div class="mb-12">
+                    <div class="absolute w-4 h-4 bg-brand-accent rounded-full -left-2 mt-1 shadow-lg shadow-sky-500/30"></div>
+                    <p class="text-sm text-brand-subtext mb-1">Nov 2023 - Present</p>
+                    <h3 class="text-xl font-semibold text-white">Senior Test Automation Engineer</h3>
+                    <p class="text-brand-subtext font-medium">4G Clinical</p>
+                    <p class="mt-2 text-brand-text/90">
+                        Architecting AI-powered test platforms (TAP), leading CI/CD infrastructure strategy, and mentoring the test automation team on complex technical challenges.
+                    </p>
+                </div>
+                
+                <!-- Timeline Item 2 -->
+                <div class="mb-12">
+                    <div class="absolute w-4 h-4 bg-brand-accent rounded-full -left-2 mt-1 shadow-lg shadow-sky-500/30"></div>
+                    <p class="text-sm text-brand-subtext mb-1">Jan 2021 - Nov 2023</p>
+                    <h3 class="text-xl font-semibold text-white">Software Engineer</h3>
+                    <p class="text-brand-subtext font-medium">4G Clinical</p>
+                    <p class="mt-2 text-brand-text/90">
+                        Contributed full-stack development to the core RTSM clinical trial platform, building custom Angular UI components and enhancing the Django backend.
+                    </p>
+                </div>
+                
+                <!-- Timeline Item 3 -->
+                <div class="mb-12">
+                    <div class="absolute w-4 h-4 bg-brand-accent rounded-full -left-2 mt-1 shadow-lg shadow-sky-500/30"></div>
+                    <p class="text-sm text-brand-subtext mb-1">Dec 2017 - Jan 2022</p>
+                    <h3 class="text-xl font-semibold text-white">Software Quality Engineer</h3>
+                    <p class="text-brand-subtext font-medium">4G Clinical</p>
+                    <p class="mt-2 text-brand-text/90">
+                        Architected foundational test frameworks, built the "E2E Tracker" tool saving 40+ hrs/week, and pioneered novel testing strategies for 'un-automatable' features.
+                    </p>
+                </div>
+                
+                <!-- Timeline Item 4 -->
+                <div class="mb-12">
+                    <div class="absolute w-4 h-4 bg-brand-accent rounded-full -left-2 mt-1 shadow-lg shadow-sky-500/30"></div>
+                    <p class="text-sm text-brand-subtext mb-1">2000 - 2017</p>
+                    <h3 class="text-xl font-semibold text-white">Early Career & Military Service</h3>
+                    <p class="text-brand-subtext font-medium">U.S. Coast Guard, Intuit, The Home Depot</p>
+                    <p class="mt-2 text-brand-text/90">
+                        Began my technical career with a 10-year service as an Avionics Technician in the U.S. Coast Guard, followed by key software engineering and quality roles at top tech companies.
+                    </p>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 text-center border-t border-brand-light/50 animate-fade-in-up" style="animation-delay: 900ms;">
+            <!-- ... existing contact section ... -->
+            <h2 class="text-3xl font-bold text-white mb-4">Get In Touch</h2>
+            <p class="max-w-xl mx-auto text-lg text-brand-subtext mb-10">
+                I'm currently seeking Staff/Principal Engineer roles in test infrastructure or AI platform engineering. Let's build something great together.
+            </p>
+            <div class="flex justify-center items-center space-x-6">
+                <a href="mailto:Andy@JenkinsSD.com" class="text-brand-accent hover:text-sky-500 transition-colors text-lg font-medium">
+                    Andy@JenkinsSD.com
+                </a>
+                <span class="text-brand-subtext">|</span>
+                <a href="https://linkedin.com/in/andrewajenkins" target="_blank" rel="noopener noreferrer" class="text-brand-accent hover:text-sky-500 transition-colors">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd"/></svg>
+                </a>
+                <a href="https://andrewajenkins.github.io" target="_blank" rel="noopener noreferrer" class="text-brand-accent hover:text-sky-500 transition-colors">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.91 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" clip-rule="evenodd"/></svg>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-brand-light/50">
+        <div class="container mx-auto px-6 text-center text-brand-subtext">
+            <p>&copy; <span id="current-year"></span> Andrew Jenkins. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- MODALS -->
+
+    <!-- Modal 1: TAP -->
+    <div id="modal-tap" class="modal fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 opacity-0 pointer-events-none">
+        <div class="modal-content bg-brand-light w-full max-w-3xl rounded-xl shadow-2xl border border-brand-light/50 p-8 transform scale-95">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-2xl font-semibold text-white">AI-Powered Test Automation Platform (TAP)</h3>
+                <button onclick="closeModal('modal-tap')" class="text-brand-subtext hover:text-white">&times;</button>
+            </div>
+            <div class="space-y-4 text-brand-subtext">
+                <div>
+                    <h4 class="font-semibold text-brand-text mb-1">The Problem</h4>
+                    <p>Test creation was a slow, manual process, often taking days. It required deep, specialized domain knowledge of the clinical trial application, creating a bottleneck and making it difficult to scale test automation efforts.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-brand-text mb-1">My Solution</h4>
+                    <p>I architected and built a production-grade, internal RAG-based platform using Claude Code. This system functions as a conversational AI partner for engineers. It's built on a microservice architecture, including:</p>
+                    <ul class="list-disc list-inside mt-2 pl-2">
+                        <li><strong>data-setup-generator:</strong> Generates complex test data from natural language.</li>
+                        <li><strong>test-generator:</strong> Creates Playwright test scripts conversationally.</li>
+                        <li><strong>test-integrator:</strong> Integrates the new scripts into our existing framework with proper page objects.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-brand-text mb-1">The Outcome</h4>
+                    <p>TAP reduced test creation time from days to minutes, fundamentally changing our workflow. It empowers engineers to generate complete, framework-compliant tests simply by describing their requirements in plain English, directly accelerating our ability to deliver quality.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2: Context Engine -->
+    <div id="modal-context" class="modal fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 opacity-0 pointer-events-none">
+        <div class="modal-content bg-brand-light w-full max-w-3xl rounded-xl shadow-2xl border border-brand-light/50 p-8 transform scale-95">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-2xl font-semibold text-white">Clinical Trials Context Engine</h3>
+                <button onclick="closeModal('modal-context')" class="text-brand-subtext hover:text-white">&times;</button>
+            </div>
+            <div class="space-y-4 text-brand-subtext">
+                <div>
+                    <h4 class="font-semibold text-brand-text mb-1">The Problem</h4>
+                    <p>For the AI (TAP) to be useful, it couldn't just write generic code. It needed to understand the deep, complex, and highly specific domain of clinical trial data models (RTSM). A generic LLM has no concept of this specialized business logic.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-brand-text mb-1">My Solution</h4>
+                    <p>I built the "brain" for TAP. This involved creating a specialized RAG (Retrieval-Augmented Generation) knowledge base from the ground up. I wrote scripts to ingest and process our application's entire set of Django models and existing test patterns. This gave the AI the specific "context" it needed to understand our business logic.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-brand-text mb-1">The Outcome</h4>
+                    <p>This Context Engine is what makes TAP truly intelligent. It enables the AI to generate code that is context-aware and specific to our clinical trials domain. It directly assists engineers by accelerating the difficult translation of complex business requirements into accurate test code.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 3: E2E Tracker -->
+    <div id="modal-tracker" class="modal fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 opacity-0 pointer-events-none">
+        <div class="modal-content bg-brand-light w-full max-w-3xl rounded-xl shadow-2xl border border-brand-light/50 p-8 transform scale-95">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-2xl font-semibold text-white">Team Efficiency Infrastructure (E2E Tracker)</h3>
+                <button onclick="closeModal('modal-tracker')" class="text-brand-subtext hover:text-white">&times;</button>
+            </div>
+            <div class="space-y-4 text-brand-subtext">
+                <div>
+                    <h4 class="font-semibold text-brand-text mb-1">The Problem</h4>
+                    <p>Our team was spending over 40 hours per week—the equivalent of one full-time engineer—manually sifting through test logs to identify and track flaky tests. This was an unsustainable drain on resources and morale.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-brand-text mb-1">My Solution</h4>
+                    <p>I took the initiative to design and build a full-stack analytics platform from scratch. The system automatically ingests test results, identifies flaky tests based on historical data, and presents them in an interactive web dashboard. The tech stack includes:</p>
+                    <ul class="list-disc list-inside mt-2 pl-2">
+                        <li><strong>Angular:</strong> For the interactive frontend dashboard.</li>
+                        <li><strong>Django:</strong> For the backend API.</li>
+                        <li><strong>MongoDB:</strong> As the database to store and query test results.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-brand-text mb-1">The Outcome</h4>
+                    <p>The "E2E Tracker" reduced manual monitoring from 40+ hours/week to under 3. It became critical infrastructure for our team's quality initiatives, formed the basis of our E2E Reliability meeting, and freed up an entire engineer's worth of time to focus on building new automation rather than chasing flakes.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END MODALS -->
+
+
+    <script>
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('#mobile-menu a, #hero a, .modal-content button').forEach(link => {
+            link.addEventListener('click', (e) => {
+                if (link.hash) { // Only for anchor links
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // Add fade-in-up animation observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100');
+                    entry.target.classList.remove('opacity-0');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.animate-fade-in-up').forEach(el => {
+            el.classList.add('opacity-0'); // Start as invisible
+            observer.observe(el);
+        });
+
+        // Modal Functions
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                document.body.classList.add('modal-open');
+                modal.classList.remove('opacity-0', 'pointer-events-none');
+                modal.querySelector('.modal-content').classList.remove('scale-95');
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                document.body.classList.remove('modal-open');
+                modal.classList.add('opacity-0');
+                modal.querySelector('.modal-content').classList.add('scale-95');
+                setTimeout(() => {
+                    modal.classList.add('pointer-events-none');
+                }, 250); // Wait for transition
+            }
+        }
+
+        // Close modal on escape key
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal').forEach(modal => {
+                    if (!modal.classList.contains('pointer-events-none')) {
+                        closeModal(modal.id);
+                    }
+                });
+            }
+        });
+
+        // Close modal on outside click
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal(modal.id);
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
+
