@@ -132,7 +132,7 @@
                 AI Platform Architect | Test Infrastructure Specialist
             </h2>
             <p class="max-w-3xl mx-auto text-lg text-brand-text mb-10">
-                I build AI-powered platforms that multiply engineering team productivity.
+                I build AI-powered platforms that multiply engineering team productivity. Most recently architected two production RAG systems: a semantic search platform for test patterns and a conversational test generation IDE.
             </p>
             <div class="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 mb-10 text-sm">
                 <div class="bg-brand-light/30 p-4 rounded-lg border border-brand-light/30">
@@ -340,17 +340,17 @@
                     <div class="md:col-span-3">
                         <h3 class="text-2xl font-semibold text-white mb-3">AI-Powered Test Generation Platform</h3>
                         <p class="text-brand-subtext mb-4">
-                            Architected and built a production-grade conversational IDE for test generation using RAG and LLM integration. Reduced test creation from weeks to days, currently scaling to additional teams across the organization.
+                            Architected two production RAG systems: first, a semantic search platform for test patterns, then a conversational IDE that superseded it. Reduced test creation from weeks to days, currently scaling to additional teams across the organization.
                         </p>
                         <p class="text-brand-subtext mb-4">
-                            <strong class="text-brand-text">Technical Architecture:</strong> 3-microservice design (data generation, test creation, integration) with custom RAG knowledge base built from Django models and existing test patterns.
+                            <strong class="text-brand-text">V2 Architecture:</strong> Claude Code SDK integration with sub-agents, custom slash commands, and dual-source RAG (production + branch contexts). Supports both HITL (human-in-the-loop) and delegation workflows.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-6">
                             <!-- ... existing tags ... -->
                             <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-3 py-1 rounded-full">RAG</span>
                             <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-3 py-1 rounded-full">LLM</span>
-                            <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-3 py-1 rounded-full">Claude API</span>
-                            <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-3 py-1 rounded-full">Microservices</span>
+                            <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-3 py-1 rounded-full">Claude SDK</span>
+                            <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-3 py-1 rounded-full">Sub-Agents</span>
                             <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-3 py-1 rounded-full">Python</span>
                             <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-3 py-1 rounded-full">Django</span>
                             <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-3 py-1 rounded-full">Playwright</span>
@@ -425,14 +425,16 @@
                     <p class="text-brand-subtext mb-6">I architect production AI systems that multiply engineering productivity.</p>
 
                     <div class="mb-6">
-                        <h4 class="text-lg font-semibold text-white mb-2">AI-Powered Test Generation Platform</h4>
-                        <p class="text-brand-subtext mb-3">Production RAG-based conversational IDE that generates end-to-end tests from natural language. Three-microservice architecture with custom domain-specific context engine for intelligent code generation.</p>
+                        <h4 class="text-lg font-semibold text-white mb-2">AI-Powered Test Generation Platform (V1 & V2)</h4>
+                        <p class="text-brand-subtext mb-3">Built two production RAG systems: <strong class="text-brand-text">V1 (Wingman)</strong> - semantic search platform that ingested cucumber feature files for existing step definition discovery. <strong class="text-brand-text">V2</strong> - conversational IDE using Claude Code SDK that superseded V1 with full test generation capabilities.</p>
                         <ul class="space-y-1 text-sm text-brand-text/80">
                             <li>• Reduced test creation from weeks to days</li>
-                            <li>• Scaling across multiple teams</li>
-                            <li>• Built custom RAG knowledge base from Django models and test patterns</li>
+                            <li>• V2 features: Sub-agents, custom slash commands, Skills, and Memory</li>
+                            <li>• Dual-source RAG: production context + branch-specific context</li>
+                            <li>• HITL (human-in-the-loop) and delegation workflows</li>
+                            <li>• Custom RAG knowledge base from Django models and test patterns</li>
                         </ul>
-                        <p class="text-sm text-brand-subtext mt-2"><strong class="text-brand-text">Technologies:</strong> Python, Claude API, RAG, Microservices, Playwright</p>
+                        <p class="text-sm text-brand-subtext mt-2"><strong class="text-brand-text">Technologies:</strong> Python, Claude Code SDK, RAG, Sub-Agents, Django, Playwright</p>
                     </div>
                 </div>
 
@@ -493,86 +495,6 @@
 
         </section>
 
-        <!-- What I'm Building Now Section -->
-        <section id="current" class="py-20 border-t border-brand-light/50 animate-fade-in-up" style="animation-delay: 800ms;">
-            <h2 class="text-3xl font-bold text-center text-white mb-8">Strategic Initiatives: Q1 2026</h2>
-            <p class="max-w-3xl mx-auto text-center text-brand-subtext mb-16 text-lg">
-                Leading the evolution from foundational platforms to an intelligent, cohesive testing ecosystem through three key strategic pillars.
-            </p>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
-                <!-- Full-Spectrum Performance Analysis -->
-                <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50 shadow-lg">
-                    <div class="flex items-center mb-4">
-                        <span class="text-4xl mr-3">📊</span>
-                        <div>
-                            <h3 class="text-xl font-semibold text-white">Full-Spectrum Performance Analysis</h3>
-                            <p class="text-sm text-brand-accent">Platform Integration</p>
-                        </div>
-                    </div>
-                    <p class="text-brand-subtext mb-4">
-                        Evolving performance monitoring by integrating API-level capture directly into E2E test suites. Using Selenium BIDI network interception to correlate slow UI experiences with specific backend requests.
-                    </p>
-                    <p class="text-sm text-brand-text/80">
-                        <strong class="text-brand-text">Impact:</strong> Unified view of performance with unprecedented diagnostic clarity
-                    </p>
-                </div>
-
-                <!-- Developer Experience Overhaul -->
-                <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50 shadow-lg">
-                    <div class="flex items-center mb-4">
-                        <span class="text-4xl mr-3">🛠️</span>
-                        <div>
-                            <h3 class="text-xl font-semibold text-white">Developer Experience (DevEx) Overhaul</h3>
-                            <p class="text-sm text-brand-accent">Framework Modernization</p>
-                        </div>
-                    </div>
-                    <p class="text-brand-subtext mb-4">
-                        Treating internal frameworks as first-class products. Hardening POCs into well-crafted, reliable assets and modernizing core E2E framework to Component-Object Model for better scalability and maintainability.
-                    </p>
-                    <p class="text-sm text-brand-text/80">
-                        <strong class="text-brand-text">Goal:</strong> Reduce friction and create more intuitive development environment
-                    </p>
-                </div>
-
-                <!-- Intelligent Test Platform 2.0 -->
-                <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50 shadow-lg">
-                    <div class="flex items-center mb-4">
-                        <span class="text-4xl mr-3">🤖</span>
-                        <div>
-                            <h3 class="text-xl font-semibold text-white">Intelligent Test Platform 2.0</h3>
-                            <p class="text-sm text-brand-accent">AI Enhancement</p>
-                        </div>
-                    </div>
-                    <p class="text-brand-subtext mb-4">
-                        Expanding RAG knowledge base with troubleshooting playbooks, technical resolutions, and CI/CD failure patterns. Transforming from test generator into expert diagnostic assistant that "clones" senior-level expertise.
-                    </p>
-                    <p class="text-sm text-brand-text/80">
-                        <strong class="text-brand-text">Vision:</strong> Make every engineer more self-sufficient with AI-powered diagnostics
-                    </p>
-                </div>
-            </div>
-
-            <div class="max-w-4xl mx-auto bg-brand-dark/30 p-6 rounded-lg border border-brand-light/30">
-                <h3 class="text-lg font-semibold text-white mb-3">Recent Achievements (2025)</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-brand-subtext">
-                    <div>
-                        <ul class="space-y-2">
-                            <li>• Full test automation on EKS stacks</li>
-                            <li>• Automated Hotfix Validation Service</li>
-                            <li>• Report Portal dashboard integration</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <ul class="space-y-2">
-                            <li>• Self-healing tests with Healenium</li>
-                            <li>• Business component coverage tracking</li>
-                            <li>• Framework migration (250+ tests)</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- Contact Section -->
         <section id="contact" class="py-20 text-center border-t border-brand-light/50 animate-fade-in-up" style="animation-delay: 900ms;">
@@ -751,13 +673,15 @@
 
                 <!-- Next Evolution -->
                 <div class="bg-gradient-to-r from-brand-accent/20 to-sky-500/20 p-6 rounded-lg border border-brand-accent/30">
-                    <h4 class="text-xl font-bold text-white mb-3">Next Evolution: TAP V2</h4>
-                    <p class="mb-3">Currently architecting the next generation with:</p>
+                    <h4 class="text-xl font-bold text-white mb-3">Evolution: From Wingman to V2</h4>
+                    <p class="mb-3"><strong class="text-brand-text">Wingman (V1):</strong> Initial semantic search platform that ingested cucumber feature files to help engineers discover existing step definitions. This solved the "I need to find test patterns" problem.</p>
+                    <p class="mb-3"><strong class="text-brand-text">V2 (Current):</strong> Full conversational IDE using Claude Code SDK that superseded Wingman with complete test generation capabilities:</p>
                     <ul class="space-y-1 text-sm">
-                        <li>• Full-featured UI ("Mission Control") for broader adoption</li>
-                        <li>• Enhanced RAG with bi-directional context updates</li>
-                        <li>• Multi-agent diagnostic capabilities</li>
-                        <li>• Integration with CI/CD for intelligent test selection</li>
+                        <li>• Sub-agents for specialized tasks (data generation, test creation, integration)</li>
+                        <li>• Custom slash commands and Skills for workflow automation</li>
+                        <li>• Dual-source RAG: production context + branch-specific context</li>
+                        <li>• Memory system for maintaining conversation state</li>
+                        <li>• HITL (human-in-the-loop) vs. delegation workflow patterns</li>
                     </ul>
                 </div>
             </div>
