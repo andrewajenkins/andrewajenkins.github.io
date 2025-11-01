@@ -103,11 +103,11 @@
             </div>
             <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Build System Stabilization</h1>
             <p class="text-xl text-brand-subtext mb-4">
-                Critical infrastructure crisis resolution preventing organization-wide development paralysis
+                6-week systematic effort improving Jenkins CI/CD reliability from 40-60% to 95%+ through layered infrastructure fixes
             </p>
             <div class="flex items-center gap-2 text-sm text-brand-subtext mb-6">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                <span>6 min read</span>
+                <span>8 min read</span>
             </div>
             <div class="flex flex-wrap gap-3">
                 <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Docker</span>
@@ -121,16 +121,16 @@
         <!-- Quick Facts -->
         <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50 text-center">
-                <p class="text-3xl font-bold text-brand-accent mb-2">Multi-Week</p>
-                <p class="text-brand-subtext">Crisis Duration</p>
+                <p class="text-3xl font-bold text-brand-accent mb-2">40% → 95%</p>
+                <p class="text-brand-subtext">Build Success Rate</p>
             </div>
             <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50 text-center">
-                <p class="text-3xl font-bold text-brand-accent mb-2">Org-Wide</p>
-                <p class="text-brand-subtext">Impact Scope</p>
+                <p class="text-3xl font-bold text-brand-accent mb-2">6-7 Weeks</p>
+                <p class="text-brand-subtext">May 20 - July 3, 2025</p>
             </div>
             <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50 text-center">
-                <p class="text-3xl font-bold text-brand-accent mb-2">CTO Bonus</p>
-                <p class="text-brand-subtext">Recognition</p>
+                <p class="text-3xl font-bold text-brand-accent mb-2">7+ Commits</p>
+                <p class="text-brand-subtext">Systematic Fixes</p>
             </div>
         </section>
 
@@ -139,76 +139,68 @@
             <h2 class="text-3xl font-bold text-white mb-6">The Challenge</h2>
             <div class="bg-brand-light p-8 rounded-xl border border-brand-light/50">
                 <p class="text-brand-subtext mb-4">
-                    The company's build infrastructure experienced severe failures affecting the entire engineering organization. Builds were failing due to spot instance unreliability and Git checkout issues, preventing developers across all teams from merging code and deploying features.
+                    E2E and unit test pipelines suffered from ~40-60% build success rates, severely impacting developer productivity across the organization.
                 </p>
                 <div class="bg-brand-dark/50 p-6 rounded-lg border border-brand-light/30">
-                    <h3 class="text-lg font-semibold text-brand-accent mb-3">Crisis Symptoms:</h3>
+                    <h3 class="text-lg font-semibold text-brand-accent mb-3">Root Causes Identified:</h3>
                     <ul class="space-y-2 text-sm text-brand-subtext">
                         <li class="flex items-start">
                             <svg class="w-5 h-5 text-red-400 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            <span>Intermittent build failures blocking all development workflows</span>
+                            <span><strong>AWS spot instances terminating unpredictably:</strong> Could fail at any stage of multi-stage pipeline, making it virtually impossible to failure-proof the entire build process</span>
                         </li>
                         <li class="flex items-start">
                             <svg class="w-5 h-5 text-red-400 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            <span>Spot instance unreliability causing unpredictable infrastructure</span>
+                            <span><strong>Git checkout failures:</strong> BitBucket API rate limits, EOF errors, stream corruption when multiple child jobs checked out code simultaneously</span>
                         </li>
                         <li class="flex items-start">
                             <svg class="w-5 h-5 text-red-400 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            <span>Git checkout failures preventing code from being cloned</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-red-400 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            <span>Organization-wide development bottleneck affecting all teams</span>
+                            <span><strong>Docker image rebuild waste:</strong> Pre-built images weren't being reused, adding ~8 minutes per test suite</span>
                         </li>
                     </ul>
                 </div>
                 <p class="text-brand-text/80 mt-4 text-sm italic">
-                    No one else in the organization had the depth of knowledge in Jenkins, Docker, and shell scripting required to diagnose and fix these infrastructure issues.
+                    Worked systematically over 6-7 weeks to diagnose and fix each failure mode, ultimately improving reliability from 40-60% to 95%+.
                 </p>
             </div>
         </section>
 
         <!-- The Approach -->
         <section class="mb-12">
-            <h2 class="text-3xl font-bold text-white mb-6">The Approach</h2>
+            <h2 class="text-3xl font-bold text-white mb-6">The Approach: Layered Strategy</h2>
+            <p class="text-brand-subtext mb-6">
+                Executed a multi-phase stabilization strategy over 6-7 weeks, prioritizing quick wins first while designing long-term architectural improvements.
+            </p>
             <div class="space-y-6">
                 <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
-                    <h3 class="text-xl font-semibold text-brand-accent mb-3">1. Deep-Dive Investigation</h3>
+                    <h3 class="text-xl font-semibold text-brand-accent mb-3">Phase 1: Hardware Tier Separation</h3>
                     <p class="text-brand-subtext mb-3">
-                        Worked evenings and two weekends to systematically diagnose the root causes. Self-taught advanced Jenkins, Groovy, Docker, and shell scripting to understand the complex interactions causing failures.
+                        Separated E2E infrastructure into dedicated hardware tiers. Build/setup stages run on stable hardware; only test execution runs on pullable instances. This prevented spot instance terminations from killing entire multi-stage builds.
                     </p>
-                    <ul class="space-y-2 text-sm text-brand-subtext">
-                        <li>• Analyzed Jenkins build logs across hundreds of failed builds</li>
-                        <li>• Traced Docker image layer caching issues</li>
-                        <li>• Identified Git checkout timeout patterns</li>
-                        <li>• Mapped spot instance termination impact on builds</li>
-                    </ul>
+                    <p class="text-sm text-brand-text/80"><strong>Impact:</strong> Prevented spot instance pulls from destroying complete build workflows</p>
                 </div>
 
                 <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
-                    <h3 class="text-xl font-semibold text-brand-accent mb-3">2. Multi-Layered Solution Design</h3>
+                    <h3 class="text-xl font-semibold text-brand-accent mb-3">Phase 2: Git Checkout Resilience</h3>
                     <p class="text-brand-subtext mb-3">
-                        Designed comprehensive fixes addressing both immediate symptoms and underlying architectural issues.
+                        Added comprehensive retry logic and error handling for git operations. Handled EOF exceptions, stream corruption, and implemented fallback mechanisms to survive transient failures.
                     </p>
-                    <ul class="space-y-2 text-sm text-brand-subtext">
-                        <li>• Implemented S3 caching solution for build artifacts</li>
-                        <li>• Fixed Git checkout retry logic and timeout handling</li>
-                        <li>• Optimized Docker image layer caching strategy</li>
-                        <li>• Added resilience patterns for spot instance failures</li>
-                    </ul>
+                    <p class="text-sm text-brand-text/80"><strong>Impact:</strong> Reduced checkout failures by ~70%</p>
                 </div>
 
                 <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
-                    <h3 class="text-xl font-semibold text-brand-accent mb-3">3. Production Hotfixes</h3>
+                    <h3 class="text-xl font-semibold text-brand-accent mb-3">Phase 3: On-Demand Migration</h3>
                     <p class="text-brand-subtext mb-3">
-                        Pushed changes directly to production during the crisis to immediately stabilize the build system. Unique expertise enabled rapid iteration without lengthy approval processes.
+                        Eliminated spot instances entirely, migrating to on-demand infrastructure after leadership prioritized reliability over cost. This quick win immediately stabilized builds while longer-term solutions were designed.
                     </p>
-                    <ul class="space-y-2 text-sm text-brand-subtext">
-                        <li>• Direct production commits to Jenkins configuration</li>
-                        <li>• Real-time validation across multiple build pipelines</li>
-                        <li>• Incremental rollout to minimize risk</li>
-                        <li>• Continuous monitoring and adjustment</li>
-                    </ul>
+                    <p class="text-sm text-brand-text/80"><strong>Impact:</strong> Eliminated 40-50% of build failures from spot instance terminations</p>
+                </div>
+
+                <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
+                    <h3 class="text-xl font-semibold text-brand-accent mb-3">Phase 4: S3 Source Caching Architecture</h3>
+                    <p class="text-brand-subtext mb-3">
+                        Designed and implemented S3-based source code caching layer (collaborative effort with infrastructure team). Parent job checks out code once and syncs to S3; child jobs copy from S3 cache instead of repeated git operations, eliminating BitBucket API rate limit issues.
+                    </p>
+                    <p class="text-sm text-brand-text/80"><strong>Impact:</strong> Reduced git operations by ~90%, near-complete elimination of checkout failures</p>
                 </div>
             </div>
         </section>
@@ -247,23 +239,23 @@
         <section class="mb-12">
             <h2 class="text-3xl font-bold text-white mb-6">The Solution</h2>
             <div class="bg-gradient-to-r from-brand-accent/10 to-sky-500/10 p-8 rounded-xl border border-brand-accent/30">
-                <h3 class="text-xl font-semibold text-white mb-4">Technical Implementation Highlights</h3>
+                <h3 class="text-xl font-semibold text-white mb-4">Layered Fixes: Quick Wins + Strategic Architecture</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="bg-brand-dark/50 p-6 rounded-lg">
-                        <h4 class="font-semibold text-brand-accent mb-2">S3 Caching Layer</h4>
-                        <p class="text-sm text-brand-subtext">Implemented intelligent artifact caching to S3, dramatically reducing dependency on unreliable spot instances and speeding up builds.</p>
+                        <h4 class="font-semibold text-brand-accent mb-2">Spot Instance Elimination</h4>
+                        <p class="text-sm text-brand-subtext">Migrated entirely to on-demand instances. Since spot instances could terminate at any pipeline stage, attempting to failure-proof every stage was impractical—elimination was the pragmatic solution.</p>
                     </div>
                     <div class="bg-brand-dark/50 p-6 rounded-lg">
-                        <h4 class="font-semibold text-brand-accent mb-2">Git Checkout Resilience</h4>
-                        <p class="text-sm text-brand-subtext">Enhanced retry logic and timeout handling for Git operations, eliminating checkout failures that plagued the system.</p>
+                        <h4 class="font-semibold text-brand-accent mb-2">S3 Source Caching</h4>
+                        <p class="text-sm text-brand-subtext">Solved BitBucket API rate limit problem by caching source code in S3. Parent job checks out once; child jobs copy from S3 cache instead of repeated git operations hitting API limits.</p>
                     </div>
                     <div class="bg-brand-dark/50 p-6 rounded-lg">
-                        <h4 class="font-semibold text-brand-accent mb-2">Docker Optimization</h4>
-                        <p class="text-sm text-brand-subtext">Redesigned Docker image layer caching strategy to minimize build times and reduce infrastructure dependencies.</p>
+                        <h4 class="font-semibold text-brand-accent mb-2">Git Checkout Retry Logic</h4>
+                        <p class="text-sm text-brand-subtext">Added comprehensive error handling for EOF exceptions and stream corruption, with intelligent retry mechanisms to survive transient git failures.</p>
                     </div>
                     <div class="bg-brand-dark/50 p-6 rounded-lg">
-                        <h4 class="font-semibold text-brand-accent mb-2">Monitoring & Observability</h4>
-                        <p class="text-sm text-brand-subtext">Added comprehensive logging and monitoring to detect future issues before they become crises.</p>
+                        <h4 class="font-semibold text-brand-accent mb-2">Docker Image Reuse</h4>
+                        <p class="text-sm text-brand-subtext">Fixed agent configuration so pre-built Docker images are properly reused across test suites, eliminating unnecessary ~8 minute rebuilds per suite.</p>
                     </div>
                 </div>
             </div>
@@ -274,23 +266,27 @@
             <h2 class="text-3xl font-bold text-white mb-6">The Impact</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
-                    <h3 class="text-lg font-semibold text-brand-accent mb-3">Immediate Results</h3>
+                    <h3 class="text-lg font-semibold text-brand-accent mb-3">Measurable Results</h3>
                     <ul class="space-y-2 text-sm text-brand-subtext">
                         <li class="flex items-start">
                             <svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            <span>Build system stabilized, unblocking all development teams</span>
+                            <span><strong>Build success rate: 40-60% → 95%+</strong></span>
                         </li>
                         <li class="flex items-start">
                             <svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            <span>Prevented organization-wide development paralysis</span>
+                            <span><strong>Spot instance failures: 100% eliminated</strong></span>
                         </li>
                         <li class="flex items-start">
                             <svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            <span>Eliminated intermittent build failures</span>
+                            <span><strong>Git checkout failures: ~95% reduced</strong></span>
                         </li>
                         <li class="flex items-start">
                             <svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            <span>Restored confidence in CI/CD infrastructure</span>
+                            <span><strong>Git operations: ~90% reduced</strong> via S3 caching</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span><strong>Image rebuild time: 8 minutes/suite saved</strong></span>
                         </li>
                     </ul>
                 </div>
@@ -300,19 +296,19 @@
                     <ul class="space-y-2 text-sm text-brand-subtext">
                         <li class="flex items-start">
                             <svg class="w-5 h-5 text-brand-accent mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            <span><strong>CTO spot bonus</strong> for critical infrastructure work</span>
+                            <span><strong>Dedicated DevOps team formed</strong> as direct result of this work</span>
                         </li>
                         <li class="flex items-start">
                             <svg class="w-5 h-5 text-brand-accent mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            <span><strong>Dedicated DevOps team formed</strong> as direct result</span>
+                            <span>Restored developer productivity organization-wide</span>
                         </li>
                         <li class="flex items-start">
                             <svg class="w-5 h-5 text-brand-accent mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            <span>Demonstrated unique infrastructure expertise value</span>
+                            <span>Architectural improvements enable future scalability</span>
                         </li>
                         <li class="flex items-start">
                             <svg class="w-5 h-5 text-brand-accent mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            <span>Established as go-to expert for critical infrastructure issues</span>
+                            <span>Established Jenkins/CI/CD expertise as critical organizational capability</span>
                         </li>
                     </ul>
                 </div>
@@ -324,20 +320,20 @@
             <h2 class="text-3xl font-bold text-white mb-6">Lessons Learned</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
-                    <h3 class="font-semibold text-brand-text mb-2">Deep Infrastructure Expertise Becomes Force Multiplier</h3>
-                    <p class="text-sm text-brand-subtext">When no one else can solve the problem, specialized expertise has exponential value. The ability to work across Jenkins, Docker, shell scripting, and cloud infrastructure enabled solo crisis resolution.</p>
+                    <h3 class="font-semibold text-brand-text mb-2">Pragmatism Over Perfectionism</h3>
+                    <p class="text-sm text-brand-subtext">Attempting to failure-proof every stage of a multi-stage pipeline against spot instance terminations was impractical. Sometimes the right solution is elimination, not mitigation.</p>
                 </div>
                 <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
-                    <h3 class="font-semibold text-brand-text mb-2">Self-Teaching Pays Compound Returns</h3>
-                    <p class="text-sm text-brand-subtext">Investment in learning Groovy, advanced Jenkins configuration, and Docker internals (not part of original job description) proved critical when crisis hit. Curiosity-driven learning creates unique capabilities.</p>
+                    <h3 class="font-semibold text-brand-text mb-2">Layered Strategy Wins</h3>
+                    <p class="text-sm text-brand-subtext">Quick wins (on-demand migration) bought time to design strategic solutions (S3 caching). Don't let perfect be the enemy of good when systems are failing.</p>
                 </div>
                 <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
-                    <h3 class="font-semibold text-brand-text mb-2">Crisis Reveals Organizational Gaps</h3>
-                    <p class="text-sm text-brand-subtext">The fact that a single person had to work weekends to save the organization's development capability revealed need for dedicated DevOps team—which was subsequently formed.</p>
+                    <h3 class="font-semibold text-brand-text mb-2">API Rate Limits Are Real</h3>
+                    <p class="text-sm text-brand-subtext">Multiple child jobs hitting BitBucket simultaneously caused rate limit failures. Caching at the parent level eliminated redundant API calls and solved the root cause.</p>
                 </div>
                 <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
-                    <h3 class="font-semibold text-brand-text mb-2">Infrastructure Resilience Requires Proactive Design</h3>
-                    <p class="text-sm text-brand-subtext">Many issues could have been prevented with better caching, retry logic, and monitoring from the start. Infrastructure needs failure mode analysis, not just happy path optimization.</p>
+                    <h3 class="font-semibold text-brand-text mb-2">Systematic Beats Heroic</h3>
+                    <p class="text-sm text-brand-subtext">6-7 weeks of methodical fixes (hardware tiers → retry logic → migration → caching) proved more effective than rushed, one-off solutions. Infrastructure work requires patience.</p>
                 </div>
             </div>
         </section>
