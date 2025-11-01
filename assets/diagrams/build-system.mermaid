@@ -1,0 +1,23 @@
+graph TB
+    subgraph "BEFORE - Failing System"
+        A[AWS Spot Instances<br/>❌ Unreliable terminations<br/>❌ No caching layer]
+        B[Git Checkout<br/>❌ Timeout failures<br/>❌ No retry logic]
+        C[Jenkins Builds<br/>❌ Intermittent failures<br/>❌ Org-wide blocker]
+    end
+
+    subgraph "AFTER - Stable System"
+        D[S3 Caching Layer<br/>✓ Artifact caching<br/>✓ Reduced spot dependency]
+        E[Resilient Git Checkout<br/>✓ Retry logic<br/>✓ Timeout handling]
+        F[Stable Builds<br/>✓ Reliable execution<br/>✓ Team unblocked]
+    end
+
+    A -.->|"FIXED"| D
+    B -.->|"FIXED"| E
+    C -.->|"FIXED"| F
+
+    style A fill:#1e293b,stroke:#ef4444,stroke-width:2px,color:#e2e8f0
+    style B fill:#1e293b,stroke:#ef4444,stroke-width:2px,color:#e2e8f0
+    style C fill:#1e293b,stroke:#ef4444,stroke-width:2px,color:#e2e8f0
+    style D fill:#1e293b,stroke:#10b981,stroke-width:2px,color:#e2e8f0
+    style E fill:#1e293b,stroke:#10b981,stroke-width:2px,color:#e2e8f0
+    style F fill:#1e293b,stroke:#10b981,stroke-width:2px,color:#e2e8f0

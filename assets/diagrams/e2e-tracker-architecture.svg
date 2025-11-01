@@ -1,0 +1,83 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Title -->
+  <text x="400" y="30" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="bold" fill="#e2e8f0" text-anchor="middle">E2E Tracker Platform Architecture</text>
+
+  <!-- Jenkins Data Source -->
+  <rect x="50" y="80" width="200" height="80" fill="#1e293b" stroke="#38bdf8" stroke-width="2" rx="8"/>
+  <text x="150" y="110" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="bold" fill="#e2e8f0" text-anchor="middle">Jenkins CI/CD</text>
+  <text x="150" y="130" font-family="Inter, Arial, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">500+ tests</text>
+  <text x="150" y="145" font-family="Inter, Arial, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">14 branches</text>
+
+  <!-- Arrow to Data Pipeline -->
+  <path d="M 250 120 L 300 120" stroke="#38bdf8" stroke-width="2" fill="none" marker-end="url(#arrow1)"/>
+  <defs>
+    <marker id="arrow1" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#38bdf8"/>
+    </marker>
+  </defs>
+
+  <!-- Data Pipeline -->
+  <rect x="300" y="80" width="200" height="120" fill="#1e293b" stroke="#38bdf8" stroke-width="2" rx="8"/>
+  <text x="400" y="105" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="bold" fill="#e2e8f0" text-anchor="middle">Data Pipeline</text>
+  <text x="400" y="125" font-family="Inter, Arial, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">• Jenkins API integration</text>
+  <text x="400" y="143" font-family="Inter, Arial, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">• Auto result ingestion</text>
+  <text x="400" y="161" font-family="Inter, Arial, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">• Real-time processing</text>
+  <text x="400" y="179" font-family="Inter, Arial, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">• Historical tracking</text>
+
+  <!-- Arrow to MongoDB -->
+  <path d="M 400 200 L 400 240" stroke="#38bdf8" stroke-width="2" fill="none" marker-end="url(#arrow2)"/>
+  <marker id="arrow2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+    <polygon points="0 0, 10 3, 0 6" fill="#38bdf8"/>
+  </marker>
+
+  <!-- MongoDB -->
+  <rect x="300" y="240" width="200" height="80" fill="#1e293b" stroke="#10b981" stroke-width="2" rx="8"/>
+  <text x="400" y="265" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="bold" fill="#e2e8f0" text-anchor="middle">MongoDB</text>
+  <text x="400" y="285" font-family="Inter, Arial, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">Test results database</text>
+  <text x="400" y="303" font-family="Inter, Arial, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">Historical trends</text>
+
+  <!-- Arrow to Analytics -->
+  <path d="M 500 280 L 550 280" stroke="#38bdf8" stroke-width="2" fill="none" marker-end="url(#arrow3)"/>
+  <marker id="arrow3" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+    <polygon points="0 0, 10 3, 0 6" fill="#38bdf8"/>
+  </marker>
+
+  <!-- Analytics Engine -->
+  <rect x="550" y="240" width="200" height="120" fill="#1e293b" stroke="#38bdf8" stroke-width="2" rx="8"/>
+  <text x="650" y="265" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="bold" fill="#e2e8f0" text-anchor="middle">Analytics Engine</text>
+  <text x="650" y="285" font-family="Inter, Arial, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">• Flaky test detection</text>
+  <text x="650" y="303" font-family="Inter, Arial, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">• Trend analysis</text>
+  <text x="650" y="321" font-family="Inter, Arial, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">• Pass/fail rates</text>
+  <text x="650" y="339" font-family="Inter, Arial, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">• Branch comparison</text>
+
+  <!-- Arrow to Django API -->
+  <path d="M 400 320 L 400 380" stroke="#38bdf8" stroke-width="2" fill="none" marker-end="url(#arrow4)"/>
+  <marker id="arrow4" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+    <polygon points="0 0, 10 3, 0 6" fill="#38bdf8"/>
+  </marker>
+
+  <!-- Django Backend -->
+  <rect x="300" y="380" width="200" height="80" fill="#1e293b" stroke="#38bdf8" stroke-width="2" rx="8"/>
+  <text x="400" y="405" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="bold" fill="#e2e8f0" text-anchor="middle">Django REST API</text>
+  <text x="400" y="425" font-family="Inter, Arial, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">Backend services</text>
+  <text x="400" y="443" font-family="Inter, Arial, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">Data endpoints</text>
+
+  <!-- Arrow to Angular -->
+  <path d="M 400 460 L 400 500" stroke="#38bdf8" stroke-width="2" fill="none" marker-end="url(#arrow5)"/>
+  <marker id="arrow5" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+    <polygon points="0 0, 10 3, 0 6" fill="#38bdf8"/>
+  </marker>
+
+  <!-- Angular Dashboard -->
+  <rect x="250" y="500" width="300" height="80" fill="#1e293b" stroke="#10b981" stroke-width="2" rx="8"/>
+  <text x="400" y="525" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="bold" fill="#e2e8f0" text-anchor="middle">Angular Dashboard</text>
+  <text x="400" y="545" font-family="Inter, Arial, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">Interactive UI • Filterable views • Drill-down</text>
+  <text x="400" y="563" font-family="Inter, Arial, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">Real-time monitoring • Export functionality</text>
+
+  <!-- Impact Badge -->
+  <rect x="50" y="240" width="200" height="120" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="2" rx="8"/>
+  <text x="150" y="270" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="bold" fill="#38bdf8" text-anchor="middle">IMPACT</text>
+  <text x="150" y="295" font-family="Inter, Arial, sans-serif" font-size="13" fill="#e2e8f0" text-anchor="middle">40+ hrs/week</text>
+  <text x="150" y="313" font-family="Inter, Arial, sans-serif" font-size="13" fill="#e2e8f0" text-anchor="middle">eliminated</text>
+  <text x="150" y="335" font-family="Inter, Arial, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">2+ years production</text>
+</svg>

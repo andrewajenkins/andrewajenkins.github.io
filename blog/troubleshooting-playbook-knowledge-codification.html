@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Troubleshooting Playbook: Codifying Infrastructure Knowledge - Andrew Jenkins</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="How building a structured troubleshooting playbook transformed tribal knowledge into institutional knowledge, enabling faster incident resolution and better team onboarding.">
+    <meta name="keywords" content="troubleshooting playbook, infrastructure knowledge, incident response, platform engineering, documentation, knowledge management, DevOps, SRE">
+    <meta name="author" content="Andrew Jenkins">
+    <link rel="canonical" href="https://andrewajenkins.com/blog/troubleshooting-playbook-knowledge-codification.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://andrewajenkins.com/blog/troubleshooting-playbook-knowledge-codification.html">
+    <meta property="og:title" content="The Troubleshooting Playbook: Codifying Infrastructure Knowledge">
+    <meta property="og:description" content="How building a structured troubleshooting playbook transformed tribal knowledge into institutional knowledge, enabling faster incident resolution and better team onboarding.">
+    <meta property="og:article:author" content="Andrew Jenkins">
+    <meta property="og:article:published_time" content="2025-11-01">
+    <meta property="og:article:tag" content="Platform Engineering">
+    <meta property="og:article:tag" content="Documentation">
+    <meta property="og:article:tag" content="Knowledge Management">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://andrewajenkins.com/blog/troubleshooting-playbook-knowledge-codification.html">
+    <meta name="twitter:title" content="The Troubleshooting Playbook: Codifying Infrastructure Knowledge">
+    <meta name="twitter:description" content="How building a structured troubleshooting playbook transformed tribal knowledge into institutional knowledge, enabling faster incident resolution and better team onboarding.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-dark': '#0f172a',
+                        'brand-light': '#1e293b',
+                        'brand-accent': '#38bdf8',
+                        'brand-text': '#e2e8f0',
+                        'brand-subtext': '#94a3b8'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gradient-to-br from-brand-dark to-brand-light text-brand-text min-h-screen">
+    <!-- Navigation -->
+    <nav class="container mx-auto px-6 py-8">
+        <div class="flex items-center justify-between">
+            <a href="/" class="text-2xl font-bold text-brand-accent">AJ</a>
+            <div class="flex gap-8">
+                <a href="/projects.html" class="text-brand-text hover:text-brand-accent transition-colors">Projects</a>
+                <a href="/blog/" class="text-brand-accent font-medium">Blog</a>
+                <a href="/about.html" class="text-brand-text hover:text-brand-accent transition-colors">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Header -->
+    <article class="container mx-auto px-6 py-12 max-w-4xl">
+        <header class="mb-12">
+            <div class="flex items-center gap-4 text-sm text-brand-subtext mb-4">
+                <time datetime="2025-11-01">November 1, 2025</time>
+                <span>•</span>
+                <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <span>9 min read</span>
+                </div>
+            </div>
+
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+                The Troubleshooting Playbook: Codifying Infrastructure Knowledge
+            </h1>
+
+            <p class="text-xl text-brand-subtext leading-relaxed">
+                How building a structured troubleshooting playbook transformed tribal knowledge into institutional knowledge, enabling faster incident resolution and better team onboarding.
+            </p>
+
+            <div class="flex flex-wrap gap-2 mt-6">
+                <span class="px-3 py-1 bg-brand-light/50 rounded-full text-sm text-brand-accent">Platform Engineering</span>
+                <span class="px-3 py-1 bg-brand-light/50 rounded-full text-sm text-brand-accent">Documentation</span>
+                <span class="px-3 py-1 bg-brand-light/50 rounded-full text-sm text-brand-accent">Knowledge Management</span>
+                <span class="px-3 py-1 bg-brand-light/50 rounded-full text-sm text-brand-accent">SRE</span>
+            </div>
+        </header>
+
+        <!-- Article Content -->
+        <div class="prose prose-invert prose-lg max-w-none">
+            <section class="mb-12">
+                <h2 class="text-3xl font-bold mb-6 text-brand-accent">The Problem: Knowledge Lost in Slack Threads</h2>
+
+                <p class="mb-6 leading-relaxed">
+                    Every engineering organization faces the same challenge: senior engineers hold critical troubleshooting knowledge that exists nowhere else. When builds fail at 2 AM, when deployment pipelines hang mysteriously, when test infrastructure behaves inconsistently—the solution often lives in someone's head or buried in a year-old Slack thread.
+                </p>
+
+                <p class="mb-6 leading-relaxed">
+                    After several incidents where the same problems kept recurring, I realized we had a systemic issue. Our team was growing, contractors were joining for 3-6 month engagements, and new engineers were hitting the same walls we'd solved months ago. The tribal knowledge problem was costing us hours every week.
+                </p>
+
+                <div class="bg-brand-light/30 border-l-4 border-brand-accent p-6 rounded-r-lg mb-6">
+                    <p class="font-semibold mb-2">The Catalyst</p>
+                    <p class="text-brand-subtext">
+                        A contractor spent 3 hours debugging a build failure that I'd solved in 5 minutes the previous month. The solution? Clear Docker cache and restart the build agent. But that knowledge existed only in my memory and a buried Slack message.
+                    </p>
+                </div>
+            </section>
+
+            <section class="mb-12">
+                <h2 class="text-3xl font-bold mb-6 text-brand-accent">Building the Playbook: Multi-Tier Structure</h2>
+
+                <p class="mb-6 leading-relaxed">
+                    The key insight was that different problems need different levels of guidance. A junior engineer needs step-by-step instructions. A senior engineer needs quick diagnostic pointers. The playbook needed to serve both.
+                </p>
+
+                <h3 class="text-2xl font-bold mb-4 mt-8">Tier 1: Quick Fixes (90% of Issues)</h3>
+
+                <p class="mb-6 leading-relaxed">
+                    These are the "have you tried turning it off and on again" solutions that actually work. Each entry follows a simple pattern:
+                </p>
+
+                <ul class="list-disc pl-6 mb-6 space-y-2 text-brand-text">
+                    <li><strong>Symptom:</strong> Clear description of the error or behavior</li>
+                    <li><strong>Quick Fix:</strong> 1-3 commands to run</li>
+                    <li><strong>Why it works:</strong> One sentence explanation</li>
+                    <li><strong>Time to resolve:</strong> Expected fix duration</li>
+                </ul>
+
+                <div class="bg-brand-dark/50 p-6 rounded-lg mb-6 border border-brand-light">
+                    <p class="text-sm text-brand-subtext mb-2">Example Entry:</p>
+                    <div class="font-mono text-sm">
+                        <p class="mb-2"><strong class="text-brand-accent">Symptom:</strong> Build fails with "No space left on device"</p>
+                        <p class="mb-2"><strong class="text-brand-accent">Quick Fix:</strong></p>
+                        <pre class="bg-brand-dark p-3 rounded overflow-x-auto mb-2">docker system prune -a --volumes -f
+terraform destroy -auto-approve
+./scripts/rebuild-environment.sh</pre>
+                        <p class="mb-2"><strong class="text-brand-accent">Why:</strong> Clears Docker cache and recreates infrastructure</p>
+                        <p><strong class="text-brand-accent">Time:</strong> 5-10 minutes</p>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-bold mb-4 mt-8">Tier 2: Diagnostic Workflows (9% of Issues)</h3>
+
+                <p class="mb-6 leading-relaxed">
+                    When quick fixes don't work, engineers need a systematic approach. These workflows guide investigation:
+                </p>
+
+                <ul class="list-disc pl-6 mb-6 space-y-2 text-brand-text">
+                    <li><strong>Diagnostic steps:</strong> Numbered sequence of checks</li>
+                    <li><strong>What to look for:</strong> Specific log patterns or metrics</li>
+                    <li><strong>Decision tree:</strong> If X, do Y; if Z, do A</li>
+                    <li><strong>Escalation criteria:</strong> When to involve senior engineers</li>
+                </ul>
+
+                <h3 class="text-2xl font-bold mb-4 mt-8">Tier 3: Deep Dives (1% of Issues)</h3>
+
+                <p class="mb-6 leading-relaxed">
+                    For novel problems, the playbook provides investigation frameworks and links to architecture documentation. These entries focus on teaching debugging methodology rather than providing answers.
+                </p>
+            </section>
+
+            <section class="mb-12">
+                <h2 class="text-3xl font-bold mb-6 text-brand-accent">Implementation: Making It Stick</h2>
+
+                <p class="mb-6 leading-relaxed">
+                    Creating documentation is easy. Getting engineers to actually use it is hard. Here's what worked:
+                </p>
+
+                <h3 class="text-2xl font-bold mb-4 mt-8">1. Start With Pain Points</h3>
+
+                <p class="mb-6 leading-relaxed">
+                    I didn't try to document everything. Instead, I tracked which questions got asked repeatedly in Slack and documented those first. The initial playbook had just 12 entries covering the most common issues.
+                </p>
+
+                <h3 class="text-2xl font-bold mb-4 mt-8">2. Make It Searchable</h3>
+
+                <p class="mb-6 leading-relaxed">
+                    The playbook lived in our Git repository as Markdown files, indexed by Confluence's search. Engineers could find solutions by searching error messages directly. No need to know the "right" terminology.
+                </p>
+
+                <h3 class="text-2xl font-bold mb-4 mt-8">3. Update During Incidents</h3>
+
+                <p class="mb-6 leading-relaxed">
+                    Every time we solved a new problem, the last step of incident resolution was updating the playbook. This became part of our post-incident process. If you solved it, you documented it.
+                </p>
+
+                <div class="bg-brand-light/30 border-l-4 border-brand-accent p-6 rounded-r-lg mb-6">
+                    <p class="font-semibold mb-2">The 5-Minute Rule</p>
+                    <p class="text-brand-subtext">
+                        If an engineer asked me a question that took more than 5 minutes to answer, I'd document the solution in the playbook. Then next time, I could link them to the docs instead of re-explaining.
+                    </p>
+                </div>
+
+                <h3 class="text-2xl font-bold mb-4 mt-8">4. Embedded in Onboarding</h3>
+
+                <p class="mb-6 leading-relaxed">
+                    New hires and contractors received the playbook link on day one. Their first task? Find the solution to a common problem using the playbook. This taught them the resource existed and built confidence in its accuracy.
+                </p>
+            </section>
+
+            <section class="mb-12">
+                <h2 class="text-3xl font-bold mb-6 text-brand-accent">Results: From Tribal to Institutional Knowledge</h2>
+
+                <p class="mb-6 leading-relaxed">
+                    After 18 months of iteration, the playbook grew to over 80 entries across four major infrastructure domains. The impact was measurable:
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-8">
+                    <div class="bg-brand-light/30 p-6 rounded-lg">
+                        <div class="text-3xl font-bold text-brand-accent mb-2">2+ hrs → 45 min</div>
+                        <p class="text-brand-subtext">Average time to resolve common build failures</p>
+                    </div>
+
+                    <div class="bg-brand-light/30 p-6 rounded-lg">
+                        <div class="text-3xl font-bold text-brand-accent mb-2">70%</div>
+                        <p class="text-brand-subtext">Reduction in repeated Slack questions</p>
+                    </div>
+
+                    <div class="bg-brand-light/30 p-6 rounded-lg">
+                        <div class="text-3xl font-bold text-brand-accent mb-2">3 days → 1 day</div>
+                        <p class="text-brand-subtext">Time for contractors to become productive</p>
+                    </div>
+
+                    <div class="bg-brand-light/30 p-6 rounded-lg">
+                        <div class="text-3xl font-bold text-brand-accent mb-2">4 versions</div>
+                        <p class="text-brand-subtext">Major playbook iterations over 2 years</p>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-bold mb-4 mt-8">The Unexpected Benefits</h3>
+
+                <ul class="list-disc pl-6 mb-6 space-y-3 text-brand-text">
+                    <li><strong>Faster incident response:</strong> On-call engineers could resolve issues without waking up senior staff</li>
+                    <li><strong>Better handoffs:</strong> When engineers left the team, their knowledge stayed in the playbook</li>
+                    <li><strong>Improved tooling:</strong> Documenting repetitive tasks highlighted automation opportunities</li>
+                    <li><strong>Confidence building:</strong> Junior engineers felt empowered to debug complex issues independently</li>
+                </ul>
+            </section>
+
+            <section class="mb-12">
+                <h2 class="text-3xl font-bold mb-6 text-brand-accent">Evolution: V4 and Beyond</h2>
+
+                <p class="mb-6 leading-relaxed">
+                    The playbook went through four major versions, each addressing different needs:
+                </p>
+
+                <div class="space-y-6 mb-8">
+                    <div class="border-l-4 border-brand-accent pl-6">
+                        <h4 class="text-xl font-bold mb-2">V1: The Basics</h4>
+                        <p class="text-brand-subtext">Simple Markdown file with 12 common issues. Focused on quick fixes only.</p>
+                    </div>
+
+                    <div class="border-l-4 border-brand-accent pl-6">
+                        <h4 class="text-xl font-bold mb-2">V2: Multi-Tier Structure</h4>
+                        <p class="text-brand-subtext">Introduced Tier 1/2/3 organization. Added diagnostic workflows for complex issues.</p>
+                    </div>
+
+                    <div class="border-l-4 border-brand-accent pl-6">
+                        <h4 class="text-xl font-bold mb-2">V3: Domain-Specific Sections</h4>
+                        <p class="text-brand-subtext">Split into Build Infrastructure, Test Platform, Deployment Pipeline, and Monitoring sections. Each owned by a subject matter expert.</p>
+                    </div>
+
+                    <div class="border-l-4 border-brand-accent pl-6">
+                        <h4 class="text-xl font-bold mb-2">V4: Integration with Tools</h4>
+                        <p class="text-brand-subtext">Added links to monitoring dashboards, runbooks, and automation scripts. Embedded playbook search into Slack bot.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-12">
+                <h2 class="text-3xl font-bold mb-6 text-brand-accent">Key Lessons: What Worked and What Didn't</h2>
+
+                <h3 class="text-2xl font-bold mb-4 mt-8">What Worked</h3>
+
+                <ul class="list-disc pl-6 mb-6 space-y-3 text-brand-text">
+                    <li><strong>Start small, iterate fast:</strong> Don't try to document everything. Solve the most painful problems first.</li>
+                    <li><strong>Make it part of the workflow:</strong> Updating the playbook became a standard step in incident resolution.</li>
+                    <li><strong>Search is critical:</strong> Engineers need to find answers by error message, not by knowing the right category.</li>
+                    <li><strong>Empower contributors:</strong> Any engineer can add entries. Senior engineers review weekly.</li>
+                    <li><strong>Metrics drive improvement:</strong> Track which entries get used most. Refine or archive low-usage content.</li>
+                </ul>
+
+                <h3 class="text-2xl font-bold mb-4 mt-8">What Didn't Work</h3>
+
+                <ul class="list-disc pl-6 mb-6 space-y-3 text-brand-text">
+                    <li><strong>Perfect formatting:</strong> Early versions had elaborate templates. Engineers ignored them. Simple is better.</li>
+                    <li><strong>Comprehensive coverage:</strong> Trying to document edge cases led to bloat. Focus on the 90% case.</li>
+                    <li><strong>Separate wiki:</strong> Hosting docs outside the repo reduced engagement. Keep it close to the code.</li>
+                    <li><strong>Annual reviews:</strong> Playbooks get stale fast. Continuous updates beat scheduled reviews.</li>
+                </ul>
+            </section>
+
+            <section class="mb-12">
+                <h2 class="text-3xl font-bold mb-6 text-brand-accent">Transferable Patterns: Building Your Own Playbook</h2>
+
+                <p class="mb-6 leading-relaxed">
+                    Whether you're managing infrastructure, building features, or running customer support, the core principles apply:
+                </p>
+
+                <div class="bg-brand-dark/50 p-8 rounded-lg border border-brand-light mb-8">
+                    <ol class="space-y-4">
+                        <li class="flex gap-4">
+                            <span class="flex-shrink-0 w-8 h-8 bg-brand-accent text-brand-dark rounded-full flex items-center justify-center font-bold">1</span>
+                            <div>
+                                <strong class="block mb-1">Identify repetitive questions</strong>
+                                <p class="text-brand-subtext">Track what gets asked in Slack, tickets, or meetings. These are your first playbook entries.</p>
+                            </div>
+                        </li>
+
+                        <li class="flex gap-4">
+                            <span class="flex-shrink-0 w-8 h-8 bg-brand-accent text-brand-dark rounded-full flex items-center justify-center font-bold">2</span>
+                            <div>
+                                <strong class="block mb-1">Create a simple template</strong>
+                                <p class="text-brand-subtext">Symptom, Solution, Why, Time to Resolve. That's it. Don't overcomplicate.</p>
+                            </div>
+                        </li>
+
+                        <li class="flex gap-4">
+                            <span class="flex-shrink-0 w-8 h-8 bg-brand-accent text-brand-dark rounded-full flex items-center justify-center font-bold">3</span>
+                            <div>
+                                <strong class="block mb-1">Make it searchable</strong>
+                                <p class="text-brand-subtext">Use a tool with full-text search. Engineers should find answers by searching error messages.</p>
+                            </div>
+                        </li>
+
+                        <li class="flex gap-4">
+                            <span class="flex-shrink-0 w-8 h-8 bg-brand-accent text-brand-dark rounded-full flex items-center justify-center font-bold">4</span>
+                            <div>
+                                <strong class="block mb-1">Embed in processes</strong>
+                                <p class="text-brand-subtext">Post-incident reviews, onboarding checklists, code review templates—add playbook updates.</p>
+                            </div>
+                        </li>
+
+                        <li class="flex gap-4">
+                            <span class="flex-shrink-0 w-8 h-8 bg-brand-accent text-brand-dark rounded-full flex items-center justify-center font-bold">5</span>
+                            <div>
+                                <strong class="block mb-1">Measure impact</strong>
+                                <p class="text-brand-subtext">Time to resolution, repeated questions, onboarding velocity. Pick one metric and track it.</p>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+
+            <section class="mb-12">
+                <h2 class="text-3xl font-bold mb-6 text-brand-accent">The Bigger Picture: Knowledge as Infrastructure</h2>
+
+                <p class="mb-6 leading-relaxed">
+                    The troubleshooting playbook taught me something fundamental about platform engineering: knowledge systems are infrastructure. They need the same care and feeding as your CI/CD pipeline or monitoring stack.
+                </p>
+
+                <p class="mb-6 leading-relaxed">
+                    When senior engineers leave, when the team scales, when you hire contractors for short engagements—the playbook ensures continuity. It's not about writing perfect documentation. It's about building systems that capture and distribute knowledge automatically.
+                </p>
+
+                <div class="bg-brand-light/30 border-l-4 border-brand-accent p-6 rounded-r-lg mb-6">
+                    <p class="font-semibold mb-2">The Test</p>
+                    <p class="text-brand-subtext">
+                        Can a new engineer resolve a common incident without asking for help? If yes, your knowledge system works. If no, it's time to build a playbook.
+                    </p>
+                </div>
+            </section>
+
+            <section class="mb-12">
+                <h2 class="text-3xl font-bold mb-6 text-brand-accent">Conclusion: From Tribal to Institutional</h2>
+
+                <p class="mb-6 leading-relaxed">
+                    The troubleshooting playbook didn't eliminate all questions or solve every problem. But it fundamentally changed how our team learned and shared knowledge. Instead of relying on the senior engineer who'd "seen it all before," we had a system that captured that experience and made it accessible to everyone.
+                </p>
+
+                <p class="mb-6 leading-relaxed">
+                    Building institutional knowledge isn't glamorous. It won't make headlines on Hacker News. But it's one of the highest-leverage activities a platform engineer can invest in. Every hour spent documenting saves dozens of hours for future teammates.
+                </p>
+
+                <p class="leading-relaxed">
+                    Start small. Pick the three most common problems your team faces. Write down the solutions. Make it searchable. Then iterate. Six months from now, you'll have a system that makes your team faster, more autonomous, and more resilient to turnover.
+                </p>
+            </section>
+        </div>
+
+        <!-- Author Bio -->
+        <div class="border-t border-brand-light pt-8 mt-12">
+            <div class="flex items-start gap-6">
+                <div class="flex-shrink-0 w-20 h-20 bg-brand-accent rounded-full flex items-center justify-center text-3xl font-bold text-brand-dark">
+                    AJ
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-2">Andrew Jenkins</h3>
+                    <p class="text-brand-subtext mb-4">
+                        Staff Platform Engineer with 8 years of remote experience building infrastructure that eliminates toil.
+                        Specializing in AI-enhanced developer tools, RAG systems, and knowledge codification.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="https://linkedin.com/in/andrewajenkins" class="text-brand-accent hover:underline">LinkedIn</a>
+                        <a href="https://github.com/andrewajenkins" class="text-brand-accent hover:underline">GitHub</a>
+                        <a href="/about.html" class="text-brand-accent hover:underline">More about me</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Related Posts -->
+        <div class="border-t border-brand-light pt-8 mt-12">
+            <h3 class="text-2xl font-bold mb-6">Related Posts</h3>
+            <div class="grid md:grid-cols-2 gap-6">
+                <a href="/blog/eliminating-40-hours-weekly-toil.html" class="block p-6 bg-brand-light/30 rounded-lg hover:bg-brand-light/50 transition-colors">
+                    <h4 class="text-xl font-bold mb-2 text-brand-accent">How I Eliminated 40 Hours of Weekly Toil</h4>
+                    <p class="text-brand-subtext mb-3">Building a custom platform that automated repetitive testing tasks across the organization.</p>
+                    <span class="text-sm text-brand-accent">8 min read →</span>
+                </a>
+
+                <a href="/blog/building-production-rag-systems.html" class="block p-6 bg-brand-light/30 rounded-lg hover:bg-brand-light/50 transition-colors">
+                    <h4 class="text-xl font-bold mb-2 text-brand-accent">Building Production RAG Systems</h4>
+                    <p class="text-brand-subtext mb-3">Architecture and lessons learned from building a dual-context RAG system for infrastructure automation.</p>
+                    <span class="text-sm text-brand-accent">10 min read →</span>
+                </a>
+            </div>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="container mx-auto px-6 py-12 border-t border-brand-light mt-12">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-brand-subtext">&copy; 2025 Andrew Jenkins. All rights reserved.</p>
+            <div class="flex gap-6">
+                <a href="https://linkedin.com/in/andrewajenkins" class="text-brand-text hover:text-brand-accent transition-colors">LinkedIn</a>
+                <a href="https://github.com/andrewajenkins" class="text-brand-text hover:text-brand-accent transition-colors">GitHub</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

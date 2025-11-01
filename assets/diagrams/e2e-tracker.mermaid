@@ -1,0 +1,16 @@
+graph TD
+    A[Jenkins CI/CD<br/>500+ tests<br/>14 branches] -->|API Integration| B[Data Pipeline<br/>• Auto ingestion<br/>• Real-time processing<br/>• Historical tracking]
+    B --> C[(MongoDB<br/>Test Results DB<br/>Historical Trends)]
+    C --> D[Analytics Engine<br/>• Flaky test detection<br/>• Trend analysis<br/>• Pass/fail rates<br/>• Branch comparison]
+    C --> E[Django REST API<br/>Backend Services<br/>Data Endpoints]
+    E --> F[Angular Dashboard<br/>Interactive UI<br/>Real-time Monitoring<br/>Export Functionality]
+
+    G[IMPACT<br/>40+ hrs/week eliminated<br/>2+ years production] -.-> F
+
+    style A fill:#1e293b,stroke:#38bdf8,stroke-width:2px,color:#e2e8f0
+    style B fill:#1e293b,stroke:#38bdf8,stroke-width:2px,color:#e2e8f0
+    style C fill:#1e293b,stroke:#10b981,stroke-width:2px,color:#e2e8f0
+    style D fill:#1e293b,stroke:#38bdf8,stroke-width:2px,color:#e2e8f0
+    style E fill:#1e293b,stroke:#38bdf8,stroke-width:2px,color:#e2e8f0
+    style F fill:#1e293b,stroke:#10b981,stroke-width:2px,color:#e2e8f0
+    style G fill:#38bdf8,fill-opacity:0.2,stroke:#38bdf8,stroke-width:2px,color:#38bdf8

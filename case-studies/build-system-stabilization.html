@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-44TWQEWQP8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-44TWQEWQP8');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Case Study: Build System Stabilization - How I resolved a multi-week infrastructure crisis preventing org-wide development paralysis. CTO spot bonus, S3 caching solution, and DevOps team formation.">
+    <meta name="keywords" content="Build System Stabilization, Infrastructure Crisis, Jenkins CI/CD, Docker Optimization, S3 Caching, DevOps Engineering">
+    <meta name="author" content="Andrew Jenkins">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://andrewajenkins.com/case-studies/build-system-stabilization.html">
+    <meta property="og:title" content="Build System Stabilization - Critical Infrastructure Case Study">
+    <meta property="og:description" content="Resolving multi-week infrastructure crisis that blocked all development teams. CTO spot bonus and dedicated DevOps team formed as result.">
+    <meta property="og:site_name" content="Andrew Jenkins Portfolio">
+    <meta property="og:article:author" content="Andrew Jenkins">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="https://andrewajenkins.com/case-studies/build-system-stabilization.html">
+    <meta name="twitter:title" content="Build System Stabilization - Critical Infrastructure Case Study">
+    <meta name="twitter:description" content="How I resolved an org-wide infrastructure crisis preventing all development workflows.">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://andrewajenkins.com/case-studies/build-system-stabilization.html">
+
+    <title>Build System Stabilization - Andrew Jenkins</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-dark': '#0f172a',
+                        'brand-light': '#1e293b',
+                        'brand-accent': '#38bdf8',
+                        'brand-text': '#e2e8f0',
+                        'brand-subtext': '#94a3b8',
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-brand-dark text-brand-text antialiased">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 bg-brand-dark/80 backdrop-blur-md z-50 border-b border-brand-light/50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="../index.html" class="text-xl font-bold text-white">Andrew Jenkins</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="../index.html" class="text-brand-subtext hover:text-white transition-colors">Home</a>
+                <a href="../projects.html" class="text-white transition-colors">Projects</a>
+                <a href="../about.html" class="text-brand-subtext hover:text-white transition-colors">About</a>
+                <a href="../blog/index.html" class="text-brand-subtext hover:text-white transition-colors">Blog</a>
+                <a href="../index.html#contact" class="text-brand-subtext hover:text-white transition-colors">Contact</a>
+            </div>
+            <button id="mobile-menu-btn" class="md:hidden text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-2">
+            <a href="../index.html" class="block text-brand-subtext hover:text-white transition-colors">Home</a>
+            <a href="../projects.html" class="block text-white transition-colors">Projects</a>
+            <a href="../about.html" class="block text-brand-subtext hover:text-white transition-colors">About</a>
+            <a href="../blog/index.html" class="block text-brand-subtext hover:text-white transition-colors">Blog</a>
+            <a href="../index.html#contact" class="block text-brand-subtext hover:text-white transition-colors">Contact</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 pt-32 pb-20 max-w-4xl">
+
+        <!-- Breadcrumb -->
+        <nav class="mb-8">
+            <a href="../projects.html" class="text-brand-accent hover:text-sky-500 text-sm">← Back to Projects</a>
+        </nav>
+
+        <!-- Case Study Header -->
+        <header class="mb-12">
+            <div class="mb-4">
+                <span class="inline-block bg-brand-accent/20 text-brand-accent text-sm font-semibold px-3 py-1 rounded-full">TIER 1: HIGH IMPACT</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Build System Stabilization</h1>
+            <p class="text-xl text-brand-subtext mb-4">
+                Critical infrastructure crisis resolution preventing organization-wide development paralysis
+            </p>
+            <div class="flex items-center gap-2 text-sm text-brand-subtext mb-6">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <span>6 min read</span>
+            </div>
+            <div class="flex flex-wrap gap-3">
+                <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Docker</span>
+                <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Jenkins</span>
+                <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Groovy</span>
+                <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">S3</span>
+                <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Crisis Resolution</span>
+            </div>
+        </header>
+
+        <!-- Quick Facts -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50 text-center">
+                <p class="text-3xl font-bold text-brand-accent mb-2">Multi-Week</p>
+                <p class="text-brand-subtext">Crisis Duration</p>
+            </div>
+            <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50 text-center">
+                <p class="text-3xl font-bold text-brand-accent mb-2">Org-Wide</p>
+                <p class="text-brand-subtext">Impact Scope</p>
+            </div>
+            <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50 text-center">
+                <p class="text-3xl font-bold text-brand-accent mb-2">CTO Bonus</p>
+                <p class="text-brand-subtext">Recognition</p>
+            </div>
+        </section>
+
+        <!-- The Challenge -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-white mb-6">The Challenge</h2>
+            <div class="bg-brand-light p-8 rounded-xl border border-brand-light/50">
+                <p class="text-brand-subtext mb-4">
+                    The company's build infrastructure experienced severe failures affecting the entire engineering organization. Builds were failing due to spot instance unreliability and Git checkout issues, preventing developers across all teams from merging code and deploying features.
+                </p>
+                <div class="bg-brand-dark/50 p-6 rounded-lg border border-brand-light/30">
+                    <h3 class="text-lg font-semibold text-brand-accent mb-3">Crisis Symptoms:</h3>
+                    <ul class="space-y-2 text-sm text-brand-subtext">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-red-400 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span>Intermittent build failures blocking all development workflows</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-red-400 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span>Spot instance unreliability causing unpredictable infrastructure</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-red-400 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span>Git checkout failures preventing code from being cloned</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-red-400 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span>Organization-wide development bottleneck affecting all teams</span>
+                        </li>
+                    </ul>
+                </div>
+                <p class="text-brand-text/80 mt-4 text-sm italic">
+                    No one else in the organization had the depth of knowledge in Jenkins, Docker, and shell scripting required to diagnose and fix these infrastructure issues.
+                </p>
+            </div>
+        </section>
+
+        <!-- The Approach -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-white mb-6">The Approach</h2>
+            <div class="space-y-6">
+                <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
+                    <h3 class="text-xl font-semibold text-brand-accent mb-3">1. Deep-Dive Investigation</h3>
+                    <p class="text-brand-subtext mb-3">
+                        Worked evenings and two weekends to systematically diagnose the root causes. Self-taught advanced Jenkins, Groovy, Docker, and shell scripting to understand the complex interactions causing failures.
+                    </p>
+                    <ul class="space-y-2 text-sm text-brand-subtext">
+                        <li>• Analyzed Jenkins build logs across hundreds of failed builds</li>
+                        <li>• Traced Docker image layer caching issues</li>
+                        <li>• Identified Git checkout timeout patterns</li>
+                        <li>• Mapped spot instance termination impact on builds</li>
+                    </ul>
+                </div>
+
+                <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
+                    <h3 class="text-xl font-semibold text-brand-accent mb-3">2. Multi-Layered Solution Design</h3>
+                    <p class="text-brand-subtext mb-3">
+                        Designed comprehensive fixes addressing both immediate symptoms and underlying architectural issues.
+                    </p>
+                    <ul class="space-y-2 text-sm text-brand-subtext">
+                        <li>• Implemented S3 caching solution for build artifacts</li>
+                        <li>• Fixed Git checkout retry logic and timeout handling</li>
+                        <li>• Optimized Docker image layer caching strategy</li>
+                        <li>• Added resilience patterns for spot instance failures</li>
+                    </ul>
+                </div>
+
+                <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
+                    <h3 class="text-xl font-semibold text-brand-accent mb-3">3. Production Hotfixes</h3>
+                    <p class="text-brand-subtext mb-3">
+                        Pushed changes directly to production during the crisis to immediately stabilize the build system. Unique expertise enabled rapid iteration without lengthy approval processes.
+                    </p>
+                    <ul class="space-y-2 text-sm text-brand-subtext">
+                        <li>• Direct production commits to Jenkins configuration</li>
+                        <li>• Real-time validation across multiple build pipelines</li>
+                        <li>• Incremental rollout to minimize risk</li>
+                        <li>• Continuous monitoring and adjustment</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Architecture Diagram -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-white mb-6">Architecture Overview</h2>
+            <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
+                <img src="../assets/diagrams/build-system.svg"
+                     alt="Build System Stabilization: Before (failing system with AWS spot instances, git checkout timeouts, intermittent Jenkins failures) and After (stable system with S3 caching layer, resilient git checkout with retry logic, and reliable builds)"
+                     class="w-full rounded-lg"
+                     data-mermaid-src="../assets/diagrams/build-system.mermaid"/>
+                <details class="mt-4">
+                    <summary class="cursor-pointer text-brand-accent hover:text-sky-400 text-sm">View Mermaid Source</summary>
+                    <pre class="mt-2 p-4 bg-brand-dark rounded-lg overflow-x-auto text-xs"><code>graph TB
+    subgraph "BEFORE - Failing System"
+        A[AWS Spot Instances&lt;br/&gt;❌ Unreliable terminations&lt;br/&gt;❌ No caching layer]
+        B[Git Checkout&lt;br/&gt;❌ Timeout failures&lt;br/&gt;❌ No retry logic]
+        C[Jenkins Builds&lt;br/&gt;❌ Intermittent failures&lt;br/&gt;❌ Org-wide blocker]
+    end
+
+    subgraph "AFTER - Stable System"
+        D[S3 Caching Layer&lt;br/&gt;✓ Artifact caching&lt;br/&gt;✓ Reduced spot dependency]
+        E[Resilient Git Checkout&lt;br/&gt;✓ Retry logic&lt;br/&gt;✓ Timeout handling]
+        F[Stable Builds&lt;br/&gt;✓ Reliable execution&lt;br/&gt;✓ Team unblocked]
+    end
+
+    A -.->|"FIXED"| D
+    B -.->|"FIXED"| E
+    C -.->|"FIXED"| F</code></pre>
+                </details>
+            </div>
+        </section>
+
+        <!-- The Solution -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-white mb-6">The Solution</h2>
+            <div class="bg-gradient-to-r from-brand-accent/10 to-sky-500/10 p-8 rounded-xl border border-brand-accent/30">
+                <h3 class="text-xl font-semibold text-white mb-4">Technical Implementation Highlights</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-brand-dark/50 p-6 rounded-lg">
+                        <h4 class="font-semibold text-brand-accent mb-2">S3 Caching Layer</h4>
+                        <p class="text-sm text-brand-subtext">Implemented intelligent artifact caching to S3, dramatically reducing dependency on unreliable spot instances and speeding up builds.</p>
+                    </div>
+                    <div class="bg-brand-dark/50 p-6 rounded-lg">
+                        <h4 class="font-semibold text-brand-accent mb-2">Git Checkout Resilience</h4>
+                        <p class="text-sm text-brand-subtext">Enhanced retry logic and timeout handling for Git operations, eliminating checkout failures that plagued the system.</p>
+                    </div>
+                    <div class="bg-brand-dark/50 p-6 rounded-lg">
+                        <h4 class="font-semibold text-brand-accent mb-2">Docker Optimization</h4>
+                        <p class="text-sm text-brand-subtext">Redesigned Docker image layer caching strategy to minimize build times and reduce infrastructure dependencies.</p>
+                    </div>
+                    <div class="bg-brand-dark/50 p-6 rounded-lg">
+                        <h4 class="font-semibold text-brand-accent mb-2">Monitoring & Observability</h4>
+                        <p class="text-sm text-brand-subtext">Added comprehensive logging and monitoring to detect future issues before they become crises.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Impact -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-white mb-6">The Impact</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
+                    <h3 class="text-lg font-semibold text-brand-accent mb-3">Immediate Results</h3>
+                    <ul class="space-y-2 text-sm text-brand-subtext">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span>Build system stabilized, unblocking all development teams</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span>Prevented organization-wide development paralysis</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span>Eliminated intermittent build failures</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span>Restored confidence in CI/CD infrastructure</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
+                    <h3 class="text-lg font-semibold text-brand-accent mb-3">Strategic Outcomes</h3>
+                    <ul class="space-y-2 text-sm text-brand-subtext">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-brand-accent mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span><strong>CTO spot bonus</strong> for critical infrastructure work</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-brand-accent mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span><strong>Dedicated DevOps team formed</strong> as direct result</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-brand-accent mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span>Demonstrated unique infrastructure expertise value</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-brand-accent mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span>Established as go-to expert for critical infrastructure issues</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lessons Learned -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-white mb-6">Lessons Learned</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
+                    <h3 class="font-semibold text-brand-text mb-2">Deep Infrastructure Expertise Becomes Force Multiplier</h3>
+                    <p class="text-sm text-brand-subtext">When no one else can solve the problem, specialized expertise has exponential value. The ability to work across Jenkins, Docker, shell scripting, and cloud infrastructure enabled solo crisis resolution.</p>
+                </div>
+                <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
+                    <h3 class="font-semibold text-brand-text mb-2">Self-Teaching Pays Compound Returns</h3>
+                    <p class="text-sm text-brand-subtext">Investment in learning Groovy, advanced Jenkins configuration, and Docker internals (not part of original job description) proved critical when crisis hit. Curiosity-driven learning creates unique capabilities.</p>
+                </div>
+                <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
+                    <h3 class="font-semibold text-brand-text mb-2">Crisis Reveals Organizational Gaps</h3>
+                    <p class="text-sm text-brand-subtext">The fact that a single person had to work weekends to save the organization's development capability revealed need for dedicated DevOps team—which was subsequently formed.</p>
+                </div>
+                <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
+                    <h3 class="font-semibold text-brand-text mb-2">Infrastructure Resilience Requires Proactive Design</h3>
+                    <p class="text-sm text-brand-subtext">Many issues could have been prevented with better caching, retry logic, and monitoring from the start. Infrastructure needs failure mode analysis, not just happy path optimization.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Transferable Insights -->
+        <section class="mb-12">
+            <div class="bg-gradient-to-r from-brand-accent/10 to-sky-500/10 p-8 rounded-xl border border-brand-accent/30">
+                <h2 class="text-2xl font-bold text-white mb-4">Transferable Insights</h2>
+                <p class="text-brand-subtext mb-6">
+                    This experience demonstrates skills applicable to any organization:
+                </p>
+                <ul class="space-y-3 text-brand-subtext">
+                    <li class="flex items-start">
+                        <svg class="w-6 h-6 text-brand-accent mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        <span><strong>Crisis leadership:</strong> Ability to own and resolve critical infrastructure failures under pressure</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-6 h-6 text-brand-accent mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        <span><strong>Full-stack infrastructure knowledge:</strong> From cloud resources to CI/CD pipelines to containerization</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-6 h-6 text-brand-accent mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        <span><strong>Systematic problem-solving:</strong> Diagnosing complex, intermittent issues across distributed systems</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-6 h-6 text-brand-accent mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        <span><strong>Resilience engineering:</strong> Designing systems that gracefully handle failures rather than catastrophically failing</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="text-center bg-brand-light p-8 rounded-xl border border-brand-light/50">
+            <h3 class="text-2xl font-bold text-white mb-4">More Case Studies</h3>
+            <p class="text-brand-subtext mb-6">
+                Explore other projects demonstrating platform engineering and force multiplication expertise.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="e2e-tracker.html" class="bg-brand-accent text-white font-semibold px-6 py-3 rounded-lg hover:bg-sky-500 transition-colors">
+                    40 Hours/Week Eliminated →
+                </a>
+                <a href="framework-migration.html" class="bg-brand-light/50 text-brand-text font-semibold px-6 py-3 rounded-lg hover:bg-brand-dark transition-colors border border-brand-light">
+                    2-Year Stalled Project →
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-brand-light/50">
+        <div class="container mx-auto px-6 text-center text-brand-subtext">
+            <p>&copy; <span id="current-year"></span> Andrew Jenkins. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>

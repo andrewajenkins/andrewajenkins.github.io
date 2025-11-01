@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-44TWQEWQP8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-44TWQEWQP8');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lessons learned building production RAG systems that move beyond generic LLMs to create domain-aware AI platforms. Architecture patterns, context engineering, and practical implementation strategies.">
+    <meta name="keywords" content="RAG Systems, AI Architecture, Production AI, LLM Applications, Domain Context, AI Platform Engineering, Vector Databases">
+    <meta name="author" content="Andrew Jenkins">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://andrewajenkins.com/blog/building-production-rag-systems.html">
+    <meta property="og:title" content="Building Production RAG Systems: Architecture and Learnings">
+    <meta property="og:description" content="Deep dive into architecting production-grade RAG systems with domain-specific context. Moving beyond generic LLMs to build intelligent platforms.">
+    <meta property="og:site_name" content="Andrew Jenkins Portfolio">
+    <meta property="og:article:author" content="Andrew Jenkins">
+    <meta property="og:article:published_time" content="2025-01-20">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://andrewajenkins.com/blog/building-production-rag-systems.html">
+    <meta name="twitter:title" content="Building Production RAG Systems: Architecture and Learnings">
+    <meta name="twitter:description" content="Lessons from building domain-aware AI platforms that transform developer productivity.">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://andrewajenkins.com/blog/building-production-rag-systems.html">
+
+    <title>Building Production RAG Systems - Andrew Jenkins</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-dark': '#0f172a',
+                        'brand-light': '#1e293b',
+                        'brand-accent': '#38bdf8',
+                        'brand-text': '#e2e8f0',
+                        'brand-subtext': '#94a3b8',
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-brand-dark text-brand-text antialiased">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 bg-brand-dark/80 backdrop-blur-md z-50 border-b border-brand-light/50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="../index.html" class="text-xl font-bold text-white">Andrew Jenkins</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="../index.html" class="text-brand-subtext hover:text-white transition-colors">Home</a>
+                <a href="../projects.html" class="text-brand-subtext hover:text-white transition-colors">Projects</a>
+                <a href="../about.html" class="text-brand-subtext hover:text-white transition-colors">About</a>
+                <a href="index.html" class="text-white transition-colors">Blog</a>
+                <a href="../index.html#contact" class="text-brand-subtext hover:text-white transition-colors">Contact</a>
+            </div>
+            <button id="mobile-menu-btn" class="md:hidden text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-2">
+            <a href="../index.html" class="block text-brand-subtext hover:text-white transition-colors">Home</a>
+            <a href="../projects.html" class="block text-brand-subtext hover:text-white transition-colors">Projects</a>
+            <a href="../about.html" class="block text-brand-subtext hover:text-white transition-colors">About</a>
+            <a href="index.html" class="block text-white transition-colors">Blog</a>
+            <a href="../index.html#contact" class="block text-brand-subtext hover:text-white transition-colors">Contact</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 pt-32 pb-20 max-w-4xl">
+
+        <!-- Breadcrumb -->
+        <nav class="mb-8">
+            <a href="index.html" class="text-brand-accent hover:text-sky-500 text-sm">← Back to Blog</a>
+        </nav>
+
+        <!-- Article Header -->
+        <header class="mb-12">
+            <div class="mb-4">
+                <span class="inline-block bg-purple-900/50 text-purple-300 text-xs font-semibold px-3 py-1 rounded-full">AI SYSTEMS</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Building Production RAG Systems: Architecture and Learnings</h1>
+            <div class="flex items-center gap-4 text-sm text-brand-subtext mb-6">
+                <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    <span>January 20, 2025</span>
+                </div>
+                <span>•</span>
+                <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <span>10 min read</span>
+                </div>
+            </div>
+            <div class="flex flex-wrap gap-2">
+                <span class="bg-purple-900/50 text-purple-300 text-xs font-medium px-3 py-1 rounded-full">RAG Architecture</span>
+                <span class="bg-purple-900/50 text-purple-300 text-xs font-medium px-3 py-1 rounded-full">AI Platforms</span>
+                <span class="bg-purple-900/50 text-purple-300 text-xs font-medium px-3 py-1 rounded-full">Domain Context</span>
+            </div>
+        </header>
+
+        <!-- Article Content -->
+        <article class="prose prose-invert prose-lg max-w-none">
+
+            <div class="bg-gradient-to-r from-purple-900/20 to-brand-dark p-6 rounded-xl border border-purple-500/30 my-8">
+                <p class="text-brand-text italic">This post shares lessons learned building an AI-powered test generation platform using RAG (Retrieval-Augmented Generation) to provide domain-specific context. While the platform is in experimental phase, the architectural patterns and learnings are broadly applicable.</p>
+            </div>
+
+            <h2 class="text-3xl font-bold text-white mt-12 mb-6">The Problem with Generic LLMs</h2>
+
+            <p class="text-brand-text mb-6">Large Language Models like Claude and GPT-4 are incredibly powerful, but they have a fundamental limitation: they don't know anything about <em>your</em> codebase.</p>
+
+            <p class="text-brand-text mb-6">Ask ChatGPT to write a test for your application, and you'll get generic code that:</p>
+
+            <ul class="space-y-2 text-brand-text mb-6">
+                <li>Doesn't match your framework conventions</li>
+                <li>Invents APIs that don't exist</li>
+                <li>Ignores your domain models and data structures</li>
+                <li>Requires extensive manual editing to be usable</li>
+            </ul>
+
+            <p class="text-brand-text mb-6">This is where RAG (Retrieval-Augmented Generation) becomes game-changing. Instead of relying solely on the LLM's training data, RAG systems augment prompts with relevant context retrieved from your actual codebase.</p>
+
+            <h2 class="text-3xl font-bold text-white mt-12 mb-6">What is RAG, Really?</h2>
+
+            <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50 my-8">
+                <h3 class="text-xl font-semibold text-white mb-4">RAG in Three Steps:</h3>
+                <ol class="space-y-4 text-brand-text">
+                    <li><strong>1. Retrieve:</strong> When a user asks a question, search your knowledge base for relevant context (code, docs, examples)</li>
+                    <li><strong>2. Augment:</strong> Inject that context into the LLM prompt alongside the user's request</li>
+                    <li><strong>3. Generate:</strong> The LLM produces a response informed by both its training <em>and</em> your domain-specific context</li>
+                </ol>
+            </div>
+
+            <p class="text-brand-text mb-6">Think of it like giving the LLM a personalized cheat sheet for your codebase before it answers. The difference in output quality is dramatic.</p>
+
+            <h2 class="text-3xl font-bold text-white mt-12 mb-6">Architecture: Dual-Context RAG System</h2>
+
+            <p class="text-brand-text mb-6">For the AI test generation platform, I architected a dual-source context system that provides both production knowledge and branch-specific awareness:</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+                <div class="bg-gradient-to-br from-brand-accent/10 to-sky-500/10 p-6 rounded-xl border border-brand-accent/30">
+                    <h3 class="text-xl font-semibold text-white mb-3">Production Context</h3>
+                    <p class="text-sm text-brand-subtext mb-4">The "Foundation"</p>
+                    <ul class="space-y-2 text-sm text-brand-text">
+                        <li>• Django model definitions</li>
+                        <li>• Test framework patterns</li>
+                        <li>• API documentation</li>
+                        <li>• Reusable helpers & utilities</li>
+                        <li>• Best practices & conventions</li>
+                    </ul>
+                </div>
+
+                <div class="bg-gradient-to-br from-purple-900/20 to-brand-dark p-6 rounded-xl border border-purple-500/30">
+                    <h3 class="text-xl font-semibold text-white mb-3">Branch Context</h3>
+                    <p class="text-sm text-brand-subtext mb-4">The "Delta"</p>
+                    <ul class="space-y-2 text-sm text-brand-text">
+                        <li>• New code changes</li>
+                        <li>• Modified models</li>
+                        <li>• Updated APIs</li>
+                        <li>• Feature-specific logic</li>
+                        <li>• Local experiments</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p class="text-brand-text mb-6">This dual-context approach ensures the AI understands both the stable foundation <em>and</em> the latest changes. It's like having a senior engineer who knows the entire system but also reviews your branch before helping.</p>
+
+            <h3 class="text-2xl font-bold text-white mt-10 mb-4">The Knowledge Base: What to Index</h3>
+
+            <p class="text-brand-text mb-6">Not everything in your codebase is equally valuable for RAG. Through experimentation, I found these categories most impactful:</p>
+
+            <div class="space-y-4 my-8">
+                <div class="bg-brand-light p-4 rounded-lg border border-brand-light/50">
+                    <h4 class="font-semibold text-brand-accent mb-2">🏗️ Domain Models (High Priority)</h4>
+                    <p class="text-sm text-brand-subtext">Django models, database schemas, business entities. These define your application's structure and relationships.</p>
+                </div>
+
+                <div class="bg-brand-light p-4 rounded-lg border border-brand-light/50">
+                    <h4 class="font-semibold text-brand-accent mb-2">📝 Test Patterns (Critical)</h4>
+                    <p class="text-sm text-brand-subtext">Example tests showing your framework conventions. The AI learns by imitation—good examples produce good outputs.</p>
+                </div>
+
+                <div class="bg-brand-light p-4 rounded-lg border border-brand-light/50">
+                    <h4 class="font-semibold text-brand-accent mb-2">🔧 Utilities & Helpers (Medium)</h4>
+                    <p class="text-sm text-brand-subtext">Reusable test utilities, data generators, fixture helpers. Helps AI use existing tools instead of reinventing them.</p>
+                </div>
+
+                <div class="bg-brand-light p-4 rounded-lg border border-brand-light/50">
+                    <h4 class="font-semibold text-brand-accent mb-2">📚 Documentation (Context-Dependent)</h4>
+                    <p class="text-sm text-brand-subtext">API docs, setup guides, troubleshooting tips. Most valuable for complex or poorly-named APIs.</p>
+                </div>
+            </div>
+
+            <h2 class="text-3xl font-bold text-white mt-12 mb-6">Implementation: Claude Code SDK Integration</h2>
+
+            <p class="text-brand-text mb-6">Rather than building RAG infrastructure from scratch, I leveraged the Claude Code SDK which provides:</p>
+
+            <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50 my-8">
+                <ul class="space-y-3 text-brand-text">
+                    <li><strong>Sub-agent architecture:</strong> Specialized agents for data setup, test generation, and integration</li>
+                    <li><strong>Built-in context management:</strong> Handles prompt construction and token limits</li>
+                    <li><strong>Tool use capabilities:</strong> Agents can read files, search code, execute commands</li>
+                    <li><strong>Conversation memory:</strong> Maintains context across multi-turn interactions</li>
+                </ul>
+            </div>
+
+            <p class="text-brand-text mb-6">The key innovation was creating a custom context engine that sits between the user and Claude, dynamically retrieving relevant context based on the request.</p>
+
+            <h3 class="text-2xl font-bold text-white mt-10 mb-4">The Context Engine: Smart Retrieval</h3>
+
+            <p class="text-brand-text mb-6">The challenge with RAG isn't just <em>storing</em> context—it's retrieving the <em>right</em> context at the <em>right time</em>. Here's the approach I developed:</p>
+
+            <div class="space-y-6 my-8">
+                <div class="border-l-4 border-brand-accent pl-6">
+                    <h4 class="font-semibold text-white mb-2">1. Intent Classification</h4>
+                    <p class="text-brand-subtext mb-2">First, classify what the user wants:</p>
+                    <ul class="text-sm text-brand-subtext space-y-1">
+                        <li>• Creating new tests</li>
+                        <li>• Modifying existing tests</li>
+                        <li>• Debugging test failures</li>
+                        <li>• Understanding test patterns</li>
+                    </ul>
+                    <p class="text-brand-subtext mt-2">Different intents need different context.</p>
+                </div>
+
+                <div class="border-l-4 border-brand-accent pl-6">
+                    <h4 class="font-semibold text-white mb-2">2. Entity Extraction</h4>
+                    <p class="text-brand-subtext mb-2">Extract relevant entities from the request:</p>
+                    <ul class="text-sm text-brand-subtext space-y-1">
+                        <li>• Model names ("User", "Clinical Trial", "Enrollment")</li>
+                        <li>• API endpoints ("/api/v1/trials/", "/enrollments/")</li>
+                        <li>• Feature names ("patient enrollment", "randomization")</li>
+                    </ul>
+                    <p class="text-brand-subtext mt-2">These become search queries for the knowledge base.</p>
+                </div>
+
+                <div class="border-l-4 border-brand-accent pl-6">
+                    <h4 class="font-semibold text-white mb-2">3. Context Retrieval & Ranking</h4>
+                    <p class="text-brand-subtext mb-2">Retrieve relevant documents and rank by relevance:</p>
+                    <ul class="text-sm text-brand-subtext space-y-1">
+                        <li>• Exact model matches (highest priority)</li>
+                        <li>• Related models (foreign key relationships)</li>
+                        <li>• Similar test examples</li>
+                        <li>• Relevant utilities</li>
+                    </ul>
+                    <p class="text-brand-subtext mt-2">Limit to top 5-10 most relevant items to avoid overwhelming the context window.</p>
+                </div>
+
+                <div class="border-l-4 border-brand-accent pl-6">
+                    <h4 class="font-semibold text-white mb-2">4. Prompt Construction</h4>
+                    <p class="text-brand-subtext">Assemble the final prompt:</p>
+                    <pre class="bg-brand-dark p-4 rounded-lg mt-2 text-xs text-brand-text overflow-x-auto">System: You are a test automation expert...
+
+Domain Context:
+[Django models]
+[Test framework patterns]
+
+User Request:
+[Original user question]
+
+Instructions:
+Generate framework-compliant tests following these patterns...</pre>
+                </div>
+            </div>
+
+            <h2 class="text-3xl font-bold text-white mt-12 mb-6">Real-World Results: What Works</h2>
+
+            <div class="bg-gradient-to-r from-brand-accent/10 to-sky-500/10 p-6 rounded-xl border border-brand-accent/30 my-8">
+                <h3 class="text-xl font-semibold text-white mb-4">Early Results (Experimental Phase)</h3>
+                <ul class="space-y-2 text-brand-text">
+                    <li>✓ <strong>Framework compliance:</strong> Generated tests follow Playwright patterns consistently</li>
+                    <li>✓ <strong>Domain awareness:</strong> Uses actual Django models and relationships correctly</li>
+                    <li>✓ <strong>Reduced iteration:</strong> Potentially >50% reduction in test creation time</li>
+                    <li>⚠️ <strong>Still experimental:</strong> Team onboarding and validation in progress</li>
+                </ul>
+            </div>
+
+            <h2 class="text-3xl font-bold text-white mt-12 mb-6">Lessons Learned: What I Wish I Knew Earlier</h2>
+
+            <div class="space-y-6 my-8">
+                <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
+                    <h3 class="text-xl font-semibold text-brand-accent mb-3">1. Quality of Examples > Quantity of Context</h3>
+                    <p class="text-brand-text">I initially indexed everything. This diluted retrieval quality. Curating 20 excellent test examples outperformed indexing 200 mediocre ones. <strong>Example quality matters more than coverage.</strong></p>
+                </div>
+
+                <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
+                    <h3 class="text-xl font-semibold text-brand-accent mb-3">2. Context Staleness is Silent Killer</h3>
+                    <p class="text-brand-text">RAG systems degrade over time as your codebase evolves. Without automated re-indexing, the AI starts recommending deprecated patterns. <strong>Treat knowledge base maintenance like dependency updates—non-negotiable.</strong></p>
+                </div>
+
+                <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
+                    <h3 class="text-xl font-semibold text-brand-accent mb-3">3. Observability is Critical</h3>
+                    <p class="text-brand-text">You can't debug what you can't see. Logging which context was retrieved for each request was essential for improving retrieval logic. <strong>Invest in observability from day one.</strong></p>
+                </div>
+
+                <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
+                    <h3 class="text-xl font-semibold text-brand-accent mb-3">4. Hybrid Approach Wins</h3>
+                    <p class="text-brand-text">Pure keyword search misses semantic meaning. Pure vector search misses exact matches. Combining both (hybrid search) gave best results. <strong>Don't choose—combine.</strong></p>
+                </div>
+
+                <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
+                    <h3 class="text-xl font-semibold text-brand-accent mb-3">5. User Intent Matters More Than Keywords</h3>
+                    <p class="text-brand-text">Early versions did keyword matching on user queries. This failed when users asked "How do I test patient enrollment?" (intent) vs "Show me Enrollment model" (entity). <strong>Understanding intent enables better context retrieval.</strong></p>
+                </div>
+            </div>
+
+            <h2 class="text-3xl font-bold text-white mt-12 mb-6">Challenges & Trade-offs</h2>
+
+            <p class="text-brand-text mb-6">Building production RAG systems isn't without challenges. Here are the key trade-offs I encountered:</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-8">
+                <div class="bg-brand-light p-4 rounded-lg border border-red-500/30">
+                    <h4 class="font-semibold text-red-400 mb-2">⚠️ Context Window Limits</h4>
+                    <p class="text-sm text-brand-subtext">Even Claude's large context window has limits. Had to implement aggressive relevance filtering to stay within bounds.</p>
+                </div>
+
+                <div class="bg-brand-light p-4 rounded-lg border border-yellow-500/30">
+                    <h4 class="font-semibold text-yellow-400 mb-2">⚠️ Latency Considerations</h4>
+                    <p class="text-sm text-brand-subtext">Retrieving context adds latency. Implemented caching and prefetching for common patterns.</p>
+                </div>
+
+                <div class="bg-brand-light p-4 rounded-lg border border-orange-500/30">
+                    <h4 class="font-semibold text-orange-400 mb-2">⚠️ Knowledge Base Drift</h4>
+                    <p class="text-sm text-brand-subtext">Codebase changes faster than documentation updates. Automated ingestion helps but isn't perfect.</p>
+                </div>
+
+                <div class="bg-brand-light p-4 rounded-lg border border-purple-500/30">
+                    <h4 class="font-semibold text-purple-400 mb-2">⚠️ Cost Management</h4>
+                    <p class="text-sm text-brand-subtext">LLM API calls add up. Implemented request batching and response caching to control costs.</p>
+                </div>
+            </div>
+
+            <h2 class="text-3xl font-bold text-white mt-12 mb-6">Practical Patterns: How to Apply This</h2>
+
+            <p class="text-brand-text mb-6">If you're building a RAG system, here's a practical roadmap:</p>
+
+            <div class="space-y-4 my-8">
+                <div class="bg-gradient-to-r from-brand-accent/10 to-sky-500/10 p-6 rounded-xl border border-brand-accent/30">
+                    <h3 class="text-lg font-semibold text-white mb-3">Phase 1: Proof of Concept (Week 1)</h3>
+                    <ul class="space-y-2 text-sm text-brand-text">
+                        <li>• Index 10-20 best examples manually</li>
+                        <li>• Implement basic keyword search</li>
+                        <li>• Test with simple prompts</li>
+                        <li>• Measure output quality</li>
+                    </ul>
+                    <p class="text-brand-accent font-semibold mt-3">Goal: Prove RAG improves output quality</p>
+                </div>
+
+                <div class="bg-gradient-to-r from-purple-900/20 to-brand-dark p-6 rounded-xl border border-purple-500/30">
+                    <h3 class="text-lg font-semibold text-white mb-3">Phase 2: Production-Ready (Weeks 2-4)</h3>
+                    <ul class="space-y-2 text-sm text-brand-text">
+                        <li>• Automate knowledge base ingestion</li>
+                        <li>• Add hybrid search (keyword + vector)</li>
+                        <li>• Implement caching layer</li>
+                        <li>• Add observability & logging</li>
+                    </ul>
+                    <p class="text-purple-300 font-semibold mt-3">Goal: Make it reliable and maintainable</p>
+                </div>
+
+                <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
+                    <h3 class="text-lg font-semibold text-white mb-3">Phase 3: Optimization (Ongoing)</h3>
+                    <ul class="space-y-2 text-sm text-brand-text">
+                        <li>• Tune retrieval algorithms based on feedback</li>
+                        <li>• Expand knowledge base strategically</li>
+                        <li>• Optimize for latency & cost</li>
+                        <li>• Build evaluation framework</li>
+                    </ul>
+                    <p class="text-brand-accent font-semibold mt-3">Goal: Continuous improvement through data</p>
+                </div>
+            </div>
+
+            <h2 class="text-3xl font-bold text-white mt-12 mb-6">The Future: Where RAG is Heading</h2>
+
+            <p class="text-brand-text mb-6">RAG is evolving rapidly. Here are trends I'm watching:</p>
+
+            <ul class="space-y-3 text-brand-text mb-6">
+                <li><strong>Multi-modal RAG:</strong> Retrieving not just text but diagrams, screenshots, and architecture visualizations</li>
+                <li><strong>Agentic RAG:</strong> AI agents that can discover and update their own knowledge bases</li>
+                <li><strong>Hierarchical retrieval:</strong> Multi-stage retrieval that progressively narrows context</li>
+                <li><strong>Active learning:</strong> Systems that learn from user corrections to improve retrieval</li>
+            </ul>
+
+            <div class="bg-gradient-to-r from-brand-accent/10 to-sky-500/10 p-8 rounded-xl border border-brand-accent/30 my-8 text-center">
+                <p class="text-2xl font-bold text-white mb-4">The best RAG systems don't just retrieve—they understand.</p>
+                <p class="text-brand-subtext">The future is AI that knows your codebase as well as your senior engineers do.</p>
+            </div>
+
+            <h2 class="text-3xl font-bold text-white mt-12 mb-6">Conclusion: Platform Thinking Applies to AI</h2>
+
+            <p class="text-brand-text mb-6">Building RAG systems taught me that AI platforms need the same thinking as traditional platforms:</p>
+
+            <ul class="space-y-2 text-brand-text mb-6">
+                <li>• <strong>Quality over quantity</strong> in data</li>
+                <li>• <strong>Observability</strong> enables iteration</li>
+                <li>• <strong>Maintenance</strong> is non-negotiable</li>
+                <li>• <strong>User experience</strong> determines adoption</li>
+            </ul>
+
+            <p class="text-brand-text mb-6">The AI-powered test generation platform is still in experimental phase, but the architectural patterns are proven. RAG transforms generic LLMs into domain experts. The question isn't <em>whether</em> to use RAG—it's <em>how</em> to implement it effectively for your domain.</p>
+
+        </article>
+
+        <!-- Author Bio -->
+        <div class="mt-16 p-6 bg-brand-light rounded-xl border border-brand-light/50">
+            <h3 class="text-xl font-semibold text-white mb-3">About the Author</h3>
+            <p class="text-brand-text mb-4">
+                Andrew Jenkins is a Staff Platform Engineer specializing in AI-powered developer productivity platforms. He architects production RAG systems and builds force-multiplier tools that transform how teams work.
+            </p>
+            <div class="flex gap-4">
+                <a href="https://linkedin.com/in/andrewajenkins" target="_blank" rel="noopener noreferrer" class="text-brand-accent hover:text-sky-500 transition-colors">LinkedIn</a>
+                <a href="https://github.com/andrewajenkins" target="_blank" rel="noopener noreferrer" class="text-brand-accent hover:text-sky-500 transition-colors">GitHub</a>
+                <a href="mailto:Andy@JenkinsSD.com" class="text-brand-accent hover:text-sky-500 transition-colors">Email</a>
+            </div>
+        </div>
+
+        <!-- Related Posts -->
+        <div class="mt-16">
+            <h3 class="text-2xl font-bold text-white mb-6">Related Posts</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <a href="eliminating-40-hours-weekly-toil.html" class="bg-brand-light p-6 rounded-xl border border-brand-light/50 hover:border-brand-accent/50 transition-all">
+                    <h4 class="text-lg font-semibold text-white mb-2">Eliminating 40 Hours of Weekly Toil</h4>
+                    <p class="text-sm text-brand-subtext">Platform engineering lessons from building analytics platforms.</p>
+                </a>
+                <a href="index.html" class="bg-brand-light p-6 rounded-xl border border-brand-light/50 hover:border-brand-accent/50 transition-all">
+                    <h4 class="text-lg font-semibold text-white mb-2">More Blog Posts</h4>
+                    <p class="text-sm text-brand-subtext">Explore more insights on platform engineering and AI systems.</p>
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-brand-light/50">
+        <div class="container mx-auto px-6 text-center text-brand-subtext">
+            <p>&copy; <span id="current-year"></span> Andrew Jenkins. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>

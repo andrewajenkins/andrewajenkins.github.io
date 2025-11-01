@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-44TWQEWQP8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-44TWQEWQP8');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Case Study: E2E Tracker - Full-stack analytics platform eliminating 40+ hours of weekly manual toil. Angular, Django, MongoDB stack running in production for 2+ years. Freed equivalent of 1 FTE.">
+    <meta name="keywords" content="Developer Productivity Platform, Full Stack Analytics, Angular Django MongoDB, Test Intelligence, Flaky Test Detection, Platform Engineering">
+    <meta name="author" content="Andrew Jenkins">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://andrewajenkins.com/case-studies/e2e-tracker.html">
+    <meta property="og:title" content="E2E Tracker: Eliminating 40+ Hours/Week of Manual Toil">
+    <meta property="og:description" content="Full-stack analytics platform automating flaky test tracking. Freed equivalent of 1 FTE, 2+ years continuous production use.">
+    <meta property="og:site_name" content="Andrew Jenkins Portfolio">
+    <meta property="og:article:author" content="Andrew Jenkins">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="https://andrewajenkins.com/case-studies/e2e-tracker.html">
+    <meta name="twitter:title" content="E2E Tracker: Eliminating 40+ Hours/Week of Manual Toil">
+    <meta name="twitter:description" content="Full-stack platform eliminating 40+ hours/week of manual test tracking. Force multiplier tool.">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://andrewajenkins.com/case-studies/e2e-tracker.html">
+
+    <title>E2E Tracker Platform - Andrew Jenkins</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-dark': '#0f172a',
+                        'brand-light': '#1e293b',
+                        'brand-accent': '#38bdf8',
+                        'brand-text': '#e2e8f0',
+                        'brand-subtext': '#94a3b8',
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-brand-dark text-brand-text antialiased">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 bg-brand-dark/80 backdrop-blur-md z-50 border-b border-brand-light/50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="../index.html" class="text-xl font-bold text-white">Andrew Jenkins</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="../index.html" class="text-brand-subtext hover:text-white transition-colors">Home</a>
+                <a href="../projects.html" class="text-white transition-colors">Projects</a>
+                <a href="../about.html" class="text-brand-subtext hover:text-white transition-colors">About</a>
+                <a href="../blog/index.html" class="text-brand-subtext hover:text-white transition-colors">Blog</a>
+                <a href="../index.html#contact" class="text-brand-subtext hover:text-white transition-colors">Contact</a>
+            </div>
+            <button id="mobile-menu-btn" class="md:hidden text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-2">
+            <a href="../index.html" class="block text-brand-subtext hover:text-white transition-colors">Home</a>
+            <a href="../projects.html" class="block text-white transition-colors">Projects</a>
+            <a href="../about.html" class="block text-brand-subtext hover:text-white transition-colors">About</a>
+            <a href="../blog/index.html" class="block text-brand-subtext hover:text-white transition-colors">Blog</a>
+            <a href="../index.html#contact" class="block text-brand-subtext hover:text-white transition-colors">Contact</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 pt-32 pb-20 max-w-4xl">
+
+        <!-- Breadcrumb -->
+        <nav class="mb-8">
+            <a href="../projects.html" class="text-brand-accent hover:text-sky-500 text-sm">← Back to Projects</a>
+        </nav>
+
+        <!-- Case Study Header -->
+        <header class="mb-12">
+            <div class="mb-4">
+                <span class="inline-block bg-brand-accent/20 text-brand-accent text-sm font-semibold px-3 py-1 rounded-full">TIER 1: HIGH IMPACT</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">40 Hours/Week Eliminated</h1>
+            <p class="text-xl text-brand-subtext mb-4">
+                Full-stack analytics platform automating flaky test tracking and freeing equivalent of 1 FTE
+            </p>
+            <div class="flex items-center gap-2 text-sm text-brand-subtext mb-6">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <span>7 min read</span>
+            </div>
+            <div class="flex flex-wrap gap-3">
+                <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Angular</span>
+                <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Django</span>
+                <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">MongoDB</span>
+                <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Jenkins API</span>
+                <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1 rounded-full">Full-Stack</span>
+            </div>
+        </header>
+
+        <!-- Quick Facts -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50 text-center">
+                <p class="text-3xl font-bold text-brand-accent mb-2">40+ Hrs/Week</p>
+                <p class="text-brand-subtext">Manual Work Eliminated</p>
+            </div>
+            <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50 text-center">
+                <p class="text-3xl font-bold text-brand-accent mb-2">2+ Years</p>
+                <p class="text-brand-subtext">Production Use</p>
+            </div>
+            <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50 text-center">
+                <p class="text-3xl font-bold text-brand-accent mb-2">500+ Tests</p>
+                <p class="text-brand-subtext">Across 14 Branches</p>
+            </div>
+        </section>
+
+        <!-- The Challenge -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-white mb-6">The Challenge</h2>
+            <div class="bg-brand-light p-8 rounded-xl border border-brand-light/50">
+                <p class="text-brand-subtext mb-4">
+                    The team was spending over 40 hours per week—the equivalent of one full-time engineer—manually sifting through test logs to identify and track flaky tests. This was an unsustainable drain on resources and morale, preventing engineers from focusing on high-value work.
+                </p>
+                <div class="bg-brand-dark/50 p-6 rounded-lg border border-brand-light/30 mb-4">
+                    <h3 class="text-lg font-semibold text-brand-accent mb-3">The Problem Wasn't Just Time-Consuming—It Was Demoralizing:</h3>
+                    <ul class="space-y-2 text-sm text-brand-subtext">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-red-400 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span>Manual review of Jenkins console output for 500+ tests across 14 branches</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-red-400 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span>Manually categorizing failures (flaky vs. real bugs vs. infrastructure issues)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-red-400 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span>Tracking trends over time in spreadsheets</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-red-400 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span>Communicating findings in weekly meetings</span>
+                        </li>
+                    </ul>
+                </div>
+                <p class="text-brand-text/80 text-sm italic">
+                    Team members, including a junior engineer who would later confirm the 40-hour impact, were buried in this manual work instead of building features or improving test coverage.
+                </p>
+            </div>
+        </section>
+
+        <!-- The Approach -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-white mb-6">The Approach</h2>
+            <div class="space-y-6">
+                <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
+                    <h3 class="text-xl font-semibold text-brand-accent mb-3">1. Proactive Initiative</h3>
+                    <p class="text-brand-subtext mb-3">
+                        Took the initiative to design and build a comprehensive analytics platform from scratch during personal time—without being asked. Identified the systemic inefficiency and decided to solve it platform-wide.
+                    </p>
+                    <ul class="space-y-2 text-sm text-brand-subtext">
+                        <li>• Recognized pattern: manual toil that could be automated</li>
+                        <li>• Proposed solution before building to validate approach</li>
+                        <li>• Built during personal time to prove value</li>
+                        <li>• Designed for sustainability and team adoption</li>
+                    </ul>
+                </div>
+
+                <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
+                    <h3 class="text-xl font-semibold text-brand-accent mb-3">2. Full-Stack Platform Design</h3>
+                    <p class="text-brand-subtext mb-3">
+                        Architected comprehensive system automatically ingesting test results, identifying flaky tests based on historical data, and presenting insights through interactive web dashboard.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                        <div class="bg-brand-dark/50 p-4 rounded-lg">
+                            <p class="font-semibold text-brand-text mb-2 text-sm">Data Pipeline</p>
+                            <ul class="space-y-1 text-xs text-brand-subtext">
+                                <li>• Jenkins integration</li>
+                                <li>• Automated result ingestion</li>
+                                <li>• Real-time processing</li>
+                                <li>• Historical tracking</li>
+                            </ul>
+                        </div>
+                        <div class="bg-brand-dark/50 p-4 rounded-lg">
+                            <p class="font-semibold text-brand-text mb-2 text-sm">Analytics Engine</p>
+                            <ul class="space-y-1 text-xs text-brand-subtext">
+                                <li>• Flaky test detection</li>
+                                <li>• Trend analysis</li>
+                                <li>• Pass/fail rate calc</li>
+                                <li>• Branch comparison</li>
+                            </ul>
+                        </div>
+                        <div class="bg-brand-dark/50 p-4 rounded-lg">
+                            <p class="font-semibold text-brand-text mb-2 text-sm">Dashboard</p>
+                            <ul class="space-y-1 text-xs text-brand-subtext">
+                                <li>• Real-time monitoring</li>
+                                <li>• Filterable views</li>
+                                <li>• Drill-down capabilities</li>
+                                <li>• Export functionality</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
+                    <h3 class="text-xl font-semibold text-brand-accent mb-3">3. Cultural Change Through Biweekly Meetings</h3>
+                    <p class="text-brand-subtext mb-3">
+                        Initially, the team was hesitant to adopt the tool. Established biweekly quality meetings to drive adoption, train the team, and demonstrate value. Drove tool from abandoned to cornerstone of team workflow.
+                    </p>
+                    <ul class="space-y-2 text-sm text-brand-subtext">
+                        <li>• Founded E2E Reliability Meeting (2+ years running)</li>
+                        <li>• Hands-on training for team members</li>
+                        <li>• Troubleshooting workshops</li>
+                        <li>• Data-driven quality discussions</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Architecture Diagram -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-white mb-6">Platform Architecture</h2>
+            <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
+                <img src="../assets/diagrams/e2e-tracker.svg"
+                     alt="E2E Test Tracker Platform: Jenkins CI/CD integration, data pipeline with MongoDB, analytics engine for flake detection, Django REST API backend, and Angular dashboard with real-time monitoring"
+                     class="w-full rounded-lg"
+                     data-mermaid-src="../assets/diagrams/e2e-tracker.mermaid"/>
+                <details class="mt-4">
+                    <summary class="cursor-pointer text-brand-accent hover:text-sky-400 text-sm">View Mermaid Source</summary>
+                    <pre class="mt-2 p-4 bg-brand-dark rounded-lg overflow-x-auto text-xs"><code>graph TD
+    A[Jenkins CI/CD&lt;br/&gt;500+ tests&lt;br/&gt;14 branches] -->|API Integration| B[Data Pipeline&lt;br/&gt;• Auto ingestion&lt;br/&gt;• Real-time processing&lt;br/&gt;• Historical tracking]
+    B --> C[(MongoDB&lt;br/&gt;Test Results DB&lt;br/&gt;Historical Trends)]
+    C --> D[Analytics Engine&lt;br/&gt;• Flaky test detection&lt;br/&gt;• Trend analysis&lt;br/&gt;• Pass/fail rates&lt;br/&gt;• Branch comparison]
+    C --> E[Django REST API&lt;br/&gt;Backend Services&lt;br/&gt;Data Endpoints]
+    E --> F[Angular Dashboard&lt;br/&gt;Interactive UI&lt;br/&gt;Real-time Monitoring&lt;br/&gt;Export Functionality]
+
+    G[IMPACT&lt;br/&gt;40+ hrs/week eliminated&lt;br/&gt;2+ years production] -.-> F</code></pre>
+                </details>
+            </div>
+        </section>
+
+        <!-- The Solution -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-white mb-6">The Solution</h2>
+            <div class="bg-gradient-to-r from-brand-accent/10 to-sky-500/10 p-8 rounded-xl border border-brand-accent/30">
+                <h3 class="text-xl font-semibold text-white mb-4">Key Platform Features</h3>
+                <div class="space-y-4">
+                    <div class="bg-brand-dark/50 p-6 rounded-lg">
+                        <h4 class="font-semibold text-brand-accent mb-2">Intelligent Flake Detection</h4>
+                        <p class="text-sm text-brand-subtext">Analyzes pass/fail patterns across builds to identify intermittent failures. Uses historical data to distinguish between flaky tests and real bugs.</p>
+                    </div>
+                    <div class="bg-brand-dark/50 p-6 rounded-lg">
+                        <h4 class="font-semibold text-brand-accent mb-2">Historical Trend Analysis</h4>
+                        <p class="text-sm text-brand-subtext">Tracks test health over time across all 14 product branches. Enables proactive identification of degrading test quality.</p>
+                    </div>
+                    <div class="bg-brand-dark/50 p-6 rounded-lg">
+                        <h4 class="font-semibold text-brand-accent mb-2">E2E Reliability Meeting Automation</h4>
+                        <p class="text-sm text-brand-subtext">Generates weekly reports automatically, providing data-driven insights for quality discussions. Became foundation of 2+ year meeting series.</p>
+                    </div>
+                    <div class="bg-brand-dark/50 p-6 rounded-lg">
+                        <h4 class="font-semibold text-brand-accent mb-2">Cross-Branch Comparison</h4>
+                        <p class="text-sm text-brand-subtext">Compare test stability across all product branches, identifying branch-specific issues and patterns.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Impact -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-white mb-6">The Impact</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
+                    <h3 class="text-lg font-semibold text-brand-accent mb-3">Quantified Results</h3>
+                    <ul class="space-y-2 text-sm text-brand-subtext">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span><strong>Manual monitoring: 40+ hours/week → under 3 hours</strong></span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span>Equivalent to freeing up 1 full-time engineer</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span>2+ years of continuous production use</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-green-400 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span>Monitors 500+ tests across 14 branches continuously</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
+                    <h3 class="text-lg font-semibold text-brand-accent mb-3">Strategic Value</h3>
+                    <ul class="space-y-2 text-sm text-brand-subtext">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-brand-accent mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span>Became critical infrastructure for quality organization</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-brand-accent mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span>Foundation for E2E Reliability Meeting (2+ years)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-brand-accent mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span>Enabled data-driven decision making on test quality</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-brand-accent mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span>Improved team morale by eliminating demoralizing toil</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-brand-accent mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span>Senior management cited as sign of team maturity</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lessons Learned -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-white mb-6">Lessons Learned</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
+                    <h3 class="font-semibold text-brand-text mb-2">Internal Platforms Need UX Thought</h3>
+                    <p class="text-sm text-brand-subtext">Developer tools need as much UX consideration as customer products. The success of e2e-tracker proved that well-designed internal platforms drive adoption and deliver exponential value.</p>
+                </div>
+                <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
+                    <h3 class="font-semibold text-brand-text mb-2">Automation's Real Value: Human Focus</h3>
+                    <p class="text-sm text-brand-subtext">Automation isn't about replacing humans—it's about freeing them for higher-level work. The 40 hours saved weren't "lost"—they were redirected to building features and improving quality.</p>
+                </div>
+                <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
+                    <h3 class="font-semibold text-brand-text mb-2">Data Visualization Transforms Raw Data</h3>
+                    <p class="text-sm text-brand-subtext">The same data existed in Jenkins logs, but without visualization and analysis, it was unusable. Turning data into actionable insights is where platform engineering creates value.</p>
+                </div>
+                <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
+                    <h3 class="font-semibold text-brand-text mb-2">Building for Maintainability Matters</h3>
+                    <p class="text-sm text-brand-subtext">Still running after 2+ years with minimal maintenance. Investing in clean architecture, good documentation, and sustainable design pays compound returns.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Transferable Insights -->
+        <section class="mb-12">
+            <div class="bg-gradient-to-r from-brand-accent/10 to-sky-500/10 p-8 rounded-xl border border-brand-accent/30">
+                <h2 class="text-2xl font-bold text-white mb-4">Transferable Insights</h2>
+                <p class="text-brand-subtext mb-6">
+                    This platform demonstrates skills applicable to any organization:
+                </p>
+                <ul class="space-y-3 text-brand-subtext">
+                    <li class="flex items-start">
+                        <svg class="w-6 h-6 text-brand-accent mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        <span><strong>Proactive problem identification:</strong> Recognizing systemic inefficiency and proposing platform solutions before being asked</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-6 h-6 text-brand-accent mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        <span><strong>Full-stack platform development:</strong> From data pipelines to analytics engines to interactive dashboards</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-6 h-6 text-brand-accent mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        <span><strong>Driving adoption through cultural change:</strong> Building the tool is half the battle—driving adoption requires training, evangelism, and persistence</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-6 h-6 text-brand-accent mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        <span><strong>Long-term thinking:</strong> Building sustainable platforms that run for 2+ years with minimal maintenance</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Legacy -->
+        <section class="mb-12">
+            <div class="bg-brand-light p-8 rounded-xl border border-brand-light/50">
+                <h2 class="text-2xl font-bold text-white mb-4">Lasting Impact</h2>
+                <p class="text-brand-subtext mb-4">
+                    E2E Tracker demonstrated the power of building internal platforms to solve team-wide problems. The success of this project informed the approach to later AI platform work—understanding that developer tools need to be as thoughtfully designed as customer-facing products.
+                </p>
+                <p class="text-sm text-brand-text/80 italic">
+                    This platform continues to serve as the backbone of test reliability efforts, enabling the team to focus on building new capabilities rather than firefighting flaky tests.
+                </p>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="text-center bg-brand-light p-8 rounded-xl border border-brand-light/50">
+            <h3 class="text-2xl font-bold text-white mb-4">More Case Studies</h3>
+            <p class="text-brand-subtext mb-6">
+                Explore other projects demonstrating platform engineering and force multiplication expertise.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="build-system-stabilization.html" class="bg-brand-accent text-white font-semibold px-6 py-3 rounded-lg hover:bg-sky-500 transition-colors">
+                    Build System Stabilization →
+                </a>
+                <a href="framework-migration.html" class="bg-brand-light/50 text-brand-text font-semibold px-6 py-3 rounded-lg hover:bg-brand-dark transition-colors border border-brand-light">
+                    2-Year Stalled Project →
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-brand-light/50">
+        <div class="container mx-auto px-6 text-center text-brand-subtext">
+            <p>&copy; <span id="current-year"></span> Andrew Jenkins. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+graph TB
+    subgraph "User Interface"
+        A[Engineer] -->|Natural Language Request| B[Conversational IDE<br/>Claude Code SDK]
+    end
+
+    subgraph "AI Platform Core"
+        B --> C[Sub-Agent Router]
+        C --> D[Data Setup Generator<br/>Clinical trial test data]
+        C --> E[Test Generator<br/>Playwright test logic]
+        C --> F[Test Integrator<br/>Framework compliance]
+    end
+
+    subgraph "Knowledge Base - RAG System"
+        G[(Production Context<br/>Django Models<br/>Test Patterns)]
+        H[(Branch Context<br/>Local Changes)]
+        I[Context Engine<br/>Domain-specific retrieval]
+    end
+
+    D --> I
+    E --> I
+    F --> I
+    I --> G
+    I --> H
+
+    J[Generated Tests<br/>✓ Framework compliant<br/>✓ Domain aware<br/>✓ >50% time reduction] --> K[IMPACT<br/>Weeks → Days<br/>Experimental Phase]
+
+    D --> J
+    E --> J
+    F --> J
+
+    style A fill:#1e293b,stroke:#38bdf8,stroke-width:2px,color:#e2e8f0
+    style B fill:#1e293b,stroke:#38bdf8,stroke-width:2px,color:#e2e8f0
+    style C fill:#1e293b,stroke:#38bdf8,stroke-width:2px,color:#e2e8f0
+    style D fill:#1e293b,stroke:#10b981,stroke-width:2px,color:#e2e8f0
+    style E fill:#1e293b,stroke:#10b981,stroke-width:2px,color:#e2e8f0
+    style F fill:#1e293b,stroke:#10b981,stroke-width:2px,color:#e2e8f0
+    style G fill:#1e293b,stroke:#38bdf8,stroke-width:2px,color:#e2e8f0
+    style H fill:#1e293b,stroke:#38bdf8,stroke-width:2px,color:#e2e8f0
+    style I fill:#1e293b,stroke:#38bdf8,stroke-width:2px,color:#e2e8f0
+    style J fill:#1e293b,stroke:#10b981,stroke-width:2px,color:#e2e8f0
+    style K fill:#38bdf8,fill-opacity:0.2,stroke:#38bdf8,stroke-width:2px,color:#38bdf8

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-44TWQEWQP8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-44TWQEWQP8');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Andrew Jenkins portfolio projects - AI platforms, infrastructure architecture, and developer productivity tools. Case studies include eliminating 40+ hours/week of manual toil and stabilizing critical build infrastructure.">
+    <meta name="keywords" content="Platform Engineering Projects, AI Test Generation, Infrastructure Stabilization, Developer Productivity, Test Automation, Full Stack Platforms">
+    <meta name="author" content="Andrew Jenkins">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://andrewajenkins.com/projects.html">
+    <meta property="og:title" content="Projects - Andrew Jenkins | Platform Engineering Case Studies">
+    <meta property="og:description" content="Platform engineering projects eliminating 40+ hours/week toil, stabilizing critical infrastructure, and building AI-powered developer tools.">
+    <meta property="og:site_name" content="Andrew Jenkins Portfolio">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="https://andrewajenkins.com/projects.html">
+    <meta name="twitter:title" content="Projects - Andrew Jenkins | Platform Engineering Case Studies">
+    <meta name="twitter:description" content="Platform engineering projects eliminating manual toil and building force-multiplier tools.">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://andrewajenkins.com/projects.html">
+
+    <title>Projects - Andrew Jenkins</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-dark': '#0f172a',
+                        'brand-light': '#1e293b',
+                        'brand-accent': '#38bdf8',
+                        'brand-text': '#e2e8f0',
+                        'brand-subtext': '#94a3b8',
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-brand-dark text-brand-text antialiased">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 bg-brand-dark/80 backdrop-blur-md z-50 border-b border-brand-light/50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold text-white">Andrew Jenkins</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="text-brand-subtext hover:text-white transition-colors">Home</a>
+                <a href="projects.html" class="text-white transition-colors">Projects</a>
+                <a href="about.html" class="text-brand-subtext hover:text-white transition-colors">About</a>
+                <a href="blog/index.html" class="text-brand-subtext hover:text-white transition-colors">Blog</a>
+                <a href="index.html#contact" class="text-brand-subtext hover:text-white transition-colors">Contact</a>
+            </div>
+            <button id="mobile-menu-btn" class="md:hidden text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-2">
+            <a href="index.html" class="block text-brand-subtext hover:text-white transition-colors">Home</a>
+            <a href="projects.html" class="block text-white transition-colors">Projects</a>
+            <a href="about.html" class="block text-brand-subtext hover:text-white transition-colors">About</a>
+            <a href="blog/index.html" class="block text-brand-subtext hover:text-white transition-colors">Blog</a>
+            <a href="index.html#contact" class="block text-brand-subtext hover:text-white transition-colors">Contact</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 pt-32 pb-20">
+
+        <!-- Page Header -->
+        <section class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Projects & Achievements</h1>
+            <p class="max-w-3xl mx-auto text-lg text-brand-subtext">
+                Infrastructure impact, force multiplication, and strategic problem-solving across AI platforms, DevOps, and developer productivity.
+            </p>
+        </section>
+
+        <!-- Featured Case Studies -->
+        <section class="mb-20">
+            <h2 class="text-2xl font-bold text-white mb-8">Featured Case Studies</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <!-- Featured Card 1 -->
+                <a href="case-studies/build-system-stabilization.html" class="group bg-brand-light p-6 rounded-xl border border-brand-light/50 hover:border-brand-accent/50 transition-all shadow-lg hover:shadow-brand-accent/20">
+                    <div class="mb-4">
+                        <span class="inline-block bg-brand-accent/20 text-brand-accent text-xs font-semibold px-3 py-1 rounded-full mb-3">TIER 1: HIGH IMPACT</span>
+                        <h3 class="text-xl font-semibold text-white mb-3 group-hover:text-brand-accent transition-colors">Build System Stabilization</h3>
+                    </div>
+                    <p class="text-brand-subtext text-sm mb-4">
+                        Single-handedly stabilized critical infrastructure crisis preventing org-wide development paralysis. CTO spot bonus and dedicated DevOps team formed as result.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-2 py-1 rounded-full">Docker</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-2 py-1 rounded-full">Jenkins</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-2 py-1 rounded-full">S3</span>
+                    </div>
+                    <span class="text-brand-accent text-sm font-semibold group-hover:underline">Read Full Case Study →</span>
+                </a>
+
+                <!-- Featured Card 2 -->
+                <a href="case-studies/e2e-tracker.html" class="group bg-brand-light p-6 rounded-xl border border-brand-light/50 hover:border-brand-accent/50 transition-all shadow-lg hover:shadow-brand-accent/20">
+                    <div class="mb-4">
+                        <span class="inline-block bg-brand-accent/20 text-brand-accent text-xs font-semibold px-3 py-1 rounded-full mb-3">TIER 1: HIGH IMPACT</span>
+                        <h3 class="text-xl font-semibold text-white mb-3 group-hover:text-brand-accent transition-colors">40 Hours/Week Eliminated</h3>
+                    </div>
+                    <p class="text-brand-subtext text-sm mb-4">
+                        Built full-stack analytics platform automating flaky test tracking. Freed equivalent of 1 FTE, 2+ years continuous production use.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-2 py-1 rounded-full">Angular</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-2 py-1 rounded-full">Django</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-2 py-1 rounded-full">MongoDB</span>
+                    </div>
+                    <span class="text-brand-accent text-sm font-semibold group-hover:underline">Read Full Case Study →</span>
+                </a>
+
+                <!-- Featured Card 3 -->
+                <a href="case-studies/framework-migration.html" class="group bg-brand-light p-6 rounded-xl border border-brand-light/50 hover:border-brand-accent/50 transition-all shadow-lg hover:shadow-brand-accent/20">
+                    <div class="mb-4">
+                        <span class="inline-block bg-brand-accent/20 text-brand-accent text-xs font-semibold px-3 py-1 rounded-full mb-3">TIER 1: HIGH IMPACT</span>
+                        <h3 class="text-xl font-semibold text-white mb-3 group-hover:text-brand-accent transition-colors">2-Year Stalled Project Completed</h3>
+                    </div>
+                    <p class="text-brand-subtext text-sm mb-4">
+                        Revived and completed critical framework migration in 2 months that had been stalled for 2+ years. Unblocked entire team.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-2 py-1 rounded-full">Selenium</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-2 py-1 rounded-full">WebDriverJS</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-2 py-1 rounded-full">Migration</span>
+                    </div>
+                    <span class="text-brand-accent text-sm font-semibold group-hover:underline">Read Full Case Study →</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- AI & Platform Engineering -->
+        <section class="mb-20">
+            <h2 class="text-2xl font-bold text-white mb-8">AI & Platform Engineering</h2>
+
+            <div class="space-y-6">
+                <!-- AI Test Generation Platform -->
+                <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
+                    <h3 class="text-xl font-semibold text-white mb-3">AI-Powered Test Generation Platform</h3>
+                    <p class="text-brand-subtext mb-4">
+                        Architected conversational IDE using RAG-based system with domain context. Potentially reducing test creation time by >50%. Currently in experimental phase with team onboarding.
+                    </p>
+                    <ul class="space-y-2 text-sm text-brand-subtext mb-4">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-brand-accent mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span>Claude Code SDK integration with sub-agents and custom workflows</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-brand-accent mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span>Dual-source RAG: production context + branch-specific context</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-brand-accent mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span>Custom knowledge base ingesting Django models and test patterns</span>
+                        </li>
+                    </ul>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-2 py-1 rounded-full">Python</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-2 py-1 rounded-full">RAG</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-2 py-1 rounded-full">Claude SDK</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-2 py-1 rounded-full">Playwright</span>
+                    </div>
+                </div>
+
+                <!-- Developer Productivity Tools -->
+                <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
+                    <h3 class="text-xl font-semibold text-white mb-3">Developer Productivity Ecosystem</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-semibold text-brand-accent mb-2">VS Code Runner Plugin</h4>
+                            <p class="text-sm text-brand-subtext">Custom IDE extension with live test discovery, integrated debugging, and advanced configuration. Daily workflow integration for entire team.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-brand-accent mb-2">"No Dependencies" Local Testing</h4>
+                            <p class="text-sm text-brand-subtext">Docker-based solution eliminating local dependency setup. Revitalized dormant workflow, enabled complex local testing scenarios.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-brand-accent mb-2">Test Docs Search Engine</h4>
+                            <p class="text-sm text-brand-subtext">Intelligent search enabling non-technical users to author tests independently. Democratized test creation, reduced TAE dependency.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-brand-accent mb-2">Python Test Data Platform</h4>
+                            <p class="text-sm text-brand-subtext">Re-architected away from complex multi-API approach. Eliminated maintenance overhead, accelerated performance.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Infrastructure & DevOps -->
+        <section class="mb-20">
+            <h2 class="text-2xl font-bold text-white mb-8">Infrastructure & Crisis Resolution</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Critical Hotfix Leadership -->
+                <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
+                    <div class="mb-3">
+                        <span class="inline-block bg-orange-900/50 text-orange-300 text-xs font-semibold px-2 py-1 rounded-full mb-2">TIER 1: HIGH IMPACT</span>
+                        <h3 class="text-lg font-semibold text-white">Critical Hotfix Leadership</h3>
+                    </div>
+                    <p class="text-sm text-brand-subtext mb-3">
+                        Led complex security hotfix on legacy branch, collaborating directly with VP of Technology and Head of Security. Delivered in 2 weeks vs 1 month estimate (50% faster).
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-sky-900/50 text-sky-300 text-xs px-2 py-1 rounded-full">Executive Collaboration</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-xs px-2 py-1 rounded-full">Security</span>
+                    </div>
+                </div>
+
+                <!-- Database Migration Fix -->
+                <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
+                    <div class="mb-3">
+                        <span class="inline-block bg-purple-900/50 text-purple-300 text-xs font-semibold px-2 py-1 rounded-full mb-2">TIER 3: PROBLEM SOLVING</span>
+                        <h3 class="text-lg font-semibold text-white">Proactive DB Cache Resolution</h3>
+                    </div>
+                    <p class="text-sm text-brand-subtext mb-3">
+                        Detected and resolved subtle locale-based hash mismatch before org-wide impact. OS update affecting Python sorting behavior prevented organization-wide blocker.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-sky-900/50 text-sky-300 text-xs px-2 py-1 rounded-full">Proactive</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-xs px-2 py-1 rounded-full">Python</span>
+                    </div>
+                </div>
+
+                <!-- Year-Old Bug -->
+                <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
+                    <div class="mb-3">
+                        <span class="inline-block bg-purple-900/50 text-purple-300 text-xs font-semibold px-2 py-1 rounded-full mb-2">TIER 3: PROBLEM SOLVING</span>
+                        <h3 class="text-lg font-semibold text-white">Year-Old Selenium Bug Fix</h3>
+                    </div>
+                    <p class="text-sm text-brand-subtext mb-3">
+                        Resolved 12-month ignored issue spamming logs. Permanently eliminated false-negative error signals, improved CI/CD signal-to-noise ratio.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-sky-900/50 text-sky-300 text-xs px-2 py-1 rounded-full">Selenium</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-xs px-2 py-1 rounded-full">Initiative</span>
+                    </div>
+                </div>
+
+                <!-- Environment Failure -->
+                <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
+                    <div class="mb-3">
+                        <span class="inline-block bg-purple-900/50 text-purple-300 text-xs font-semibold px-2 py-1 rounded-full mb-2">TIER 3: PROBLEM SOLVING</span>
+                        <h3 class="text-lg font-semibold text-white">Critical Environment Diagnosis</h3>
+                    </div>
+                    <p class="text-sm text-brand-subtext mb-3">
+                        Correctly diagnosed corrupted database cache in minutes after 2 Directors + Senior SWE spent 1+ hour on wrong approach. Immediately restored critical environment.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-sky-900/50 text-sky-300 text-xs px-2 py-1 rounded-full">Debugging</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-xs px-2 py-1 rounded-full">Under Pressure</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Leadership & Cultural Impact -->
+        <section class="mb-20">
+            <h2 class="text-2xl font-bold text-white mb-8">Leadership & Knowledge Sharing</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- E2E Reliability Meeting -->
+                <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
+                    <div class="mb-3">
+                        <span class="inline-block bg-green-900/50 text-green-300 text-xs font-semibold px-2 py-1 rounded-full mb-2">TIER 4: LEADERSHIP</span>
+                        <h3 class="text-lg font-semibold text-white">E2E Reliability Meeting (2 Years)</h3>
+                    </div>
+                    <p class="text-sm text-brand-subtext mb-3">
+                        Founded and led biweekly quality meetings. Drove e2e-tracker adoption from 0% to team standard. Senior management cited as evidence of team maturity advancement.
+                    </p>
+                    <ul class="space-y-1 text-xs text-brand-subtext">
+                        <li>• Taught team e2e-tracker usage</li>
+                        <li>• Trained on intermittent issue troubleshooting</li>
+                        <li>• Mentored 6 team members + SQEs</li>
+                    </ul>
+                </div>
+
+                <!-- Troubleshooting Playbook -->
+                <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
+                    <div class="mb-3">
+                        <span class="inline-block bg-green-900/50 text-green-300 text-xs font-semibold px-2 py-1 rounded-full mb-2">TIER 4: LEADERSHIP</span>
+                        <h3 class="text-lg font-semibold text-white">Troubleshooting Playbook (V4)</h3>
+                    </div>
+                    <p class="text-sm text-brand-subtext mb-3">
+                        Authored and maintained comprehensive troubleshooting knowledge base spanning core, intermediate, and advanced topics. Critical for contractor/junior engineer onboarding.
+                    </p>
+                    <ul class="space-y-1 text-xs text-brand-subtext">
+                        <li>• Debugging methodologies</li>
+                        <li>• Build systems & CI/CD</li>
+                        <li>• Framework architecture</li>
+                    </ul>
+                </div>
+
+                <!-- AI Adoption Leadership -->
+                <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
+                    <div class="mb-3">
+                        <span class="inline-block bg-green-900/50 text-green-300 text-xs font-semibold px-2 py-1 rounded-full mb-2">TIER 4: LEADERSHIP</span>
+                        <h3 class="text-lg font-semibold text-white">AI Adoption Leadership</h3>
+                    </div>
+                    <p class="text-sm text-brand-subtext mb-3">
+                        Pioneered AI tool adoption (Copilot/Gemini) across engineering org. Led organization survey at leadership request, contributed to formal AI guidelines.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-sky-900/50 text-sky-300 text-xs px-2 py-1 rounded-full">Change Management</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-xs px-2 py-1 rounded-full">Cross-Org Impact</span>
+                    </div>
+                </div>
+
+                <!-- Strategic Roadmap -->
+                <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
+                    <div class="mb-3">
+                        <span class="inline-block bg-green-900/50 text-green-300 text-xs font-semibold px-2 py-1 rounded-full mb-2">TIER 4: LEADERSHIP</span>
+                        <h3 class="text-lg font-semibold text-white">Executive Roadmap Presentations</h3>
+                    </div>
+                    <p class="text-sm text-brand-subtext mb-3">
+                        Presented automation roadmap monthly to VP Engineering and CTO for 12+ months. Defined and led strategic planning sessions for Q1 2026 technical strategy.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-sky-900/50 text-sky-300 text-xs px-2 py-1 rounded-full">Strategic Planning</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-xs px-2 py-1 rounded-full">Executive Comms</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="text-center bg-gradient-to-r from-brand-light/50 to-brand-dark/50 p-12 rounded-xl border border-brand-light/50">
+            <h2 class="text-3xl font-bold text-white mb-4">Interested in Learning More?</h2>
+            <p class="text-brand-subtext mb-8 max-w-2xl mx-auto">
+                Read the detailed case studies to see how these projects were architected, the challenges overcome, and the lessons learned.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="about.html" class="bg-brand-accent text-white font-semibold px-8 py-3 rounded-lg hover:bg-sky-500 transition-colors shadow-lg shadow-sky-500/20">
+                    About Me
+                </a>
+                <a href="index.html#contact" class="bg-brand-light/50 text-brand-text font-semibold px-8 py-3 rounded-lg hover:bg-brand-light transition-colors border border-brand-light">
+                    Get in Touch
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-brand-light/50">
+        <div class="container mx-auto px-6 text-center text-brand-subtext">
+            <p>&copy; <span id="current-year"></span> Andrew Jenkins. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>

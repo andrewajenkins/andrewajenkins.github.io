@@ -1,0 +1,66 @@
+<svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Title -->
+  <text x="400" y="30" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="bold" fill="#e2e8f0" text-anchor="middle">Build System Stabilization Architecture</text>
+
+  <!-- Before Section -->
+  <g id="before">
+    <text x="200" y="70" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="bold" fill="#ef4444" text-anchor="middle">BEFORE (Failing)</text>
+
+    <!-- Spot Instances (Unreliable) -->
+    <rect x="50" y="90" width="300" height="80" fill="#1e293b" stroke="#ef4444" stroke-width="2" rx="8"/>
+    <text x="200" y="115" font-family="Inter, Arial, sans-serif" font-size="14" fill="#e2e8f0" text-anchor="middle">AWS Spot Instances</text>
+    <text x="200" y="135" font-family="Inter, Arial, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">❌ Unreliable terminations</text>
+    <text x="200" y="155" font-family="Inter, Arial, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">❌ No caching layer</text>
+
+    <!-- Git Checkout Issues -->
+    <rect x="50" y="190" width="300" height="80" fill="#1e293b" stroke="#ef4444" stroke-width="2" rx="8"/>
+    <text x="200" y="215" font-family="Inter, Arial, sans-serif" font-size="14" fill="#e2e8f0" text-anchor="middle">Git Checkout</text>
+    <text x="200" y="235" font-family="Inter, Arial, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">❌ Timeout failures</text>
+    <text x="200" y="255" font-family="Inter, Arial, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">❌ No retry logic</text>
+
+    <!-- Jenkins (Affected) -->
+    <rect x="50" y="290" width="300" height="80" fill="#1e293b" stroke="#ef4444" stroke-width="2" rx="8"/>
+    <text x="200" y="315" font-family="Inter, Arial, sans-serif" font-size="14" fill="#e2e8f0" text-anchor="middle">Jenkins Builds</text>
+    <text x="200" y="335" font-family="Inter, Arial, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">❌ Intermittent failures</text>
+    <text x="200" y="355" font-family="Inter, Arial, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">❌ Org-wide blocker</text>
+  </g>
+
+  <!-- Arrow -->
+  <g id="arrow">
+    <path d="M 380 250 L 420 250" stroke="#38bdf8" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+    <defs>
+      <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+        <polygon points="0 0, 10 3, 0 6" fill="#38bdf8"/>
+      </marker>
+    </defs>
+    <text x="400" y="245" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="bold" fill="#38bdf8" text-anchor="middle">FIXED</text>
+  </g>
+
+  <!-- After Section -->
+  <g id="after">
+    <text x="600" y="70" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="bold" fill="#10b981" text-anchor="middle">AFTER (Stable)</text>
+
+    <!-- S3 Caching Layer -->
+    <rect x="450" y="90" width="300" height="80" fill="#1e293b" stroke="#10b981" stroke-width="2" rx="8"/>
+    <text x="600" y="115" font-family="Inter, Arial, sans-serif" font-size="14" fill="#e2e8f0" text-anchor="middle">S3 Caching Layer</text>
+    <text x="600" y="135" font-family="Inter, Arial, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">✓ Artifact caching</text>
+    <text x="600" y="155" font-family="Inter, Arial, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">✓ Reduced spot dependency</text>
+
+    <!-- Enhanced Git Checkout -->
+    <rect x="450" y="190" width="300" height="80" fill="#1e293b" stroke="#10b981" stroke-width="2" rx="8"/>
+    <text x="600" y="215" font-family="Inter, Arial, sans-serif" font-size="14" fill="#e2e8f0" text-anchor="middle">Resilient Git Checkout</text>
+    <text x="600" y="235" font-family="Inter, Arial, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">✓ Retry logic</text>
+    <text x="600" y="255" font-family="Inter, Arial, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">✓ Timeout handling</text>
+
+    <!-- Stable Jenkins -->
+    <rect x="450" y="290" width="300" height="80" fill="#1e293b" stroke="#10b981" stroke-width="2" rx="8"/>
+    <text x="600" y="315" font-family="Inter, Arial, sans-serif" font-size="14" fill="#e2e8f0" text-anchor="middle">Stable Builds</text>
+    <text x="600" y="335" font-family="Inter, Arial, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">✓ Reliable execution</text>
+    <text x="600" y="355" font-family="Inter, Arial, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">✓ Team unblocked</text>
+  </g>
+
+  <!-- Impact Badge -->
+  <rect x="300" y="420" width="200" height="60" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="2" rx="8"/>
+  <text x="400" y="445" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="bold" fill="#38bdf8" text-anchor="middle">IMPACT</text>
+  <text x="400" y="465" font-family="Inter, Arial, sans-serif" font-size="12" fill="#e2e8f0" text-anchor="middle">CTO Spot Bonus + DevOps Team</text>
+</svg>
