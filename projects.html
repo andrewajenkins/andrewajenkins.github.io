@@ -69,7 +69,6 @@
                 <a href="index.html" class="text-brand-subtext hover:text-white transition-colors">Home</a>
                 <a href="projects.html" class="text-white transition-colors">Projects</a>
                 <a href="about.html" class="text-brand-subtext hover:text-white transition-colors">About</a>
-                <a href="blog/index.html" class="text-brand-subtext hover:text-white transition-colors">Blog</a>
                 <a href="index.html#contact" class="text-brand-subtext hover:text-white transition-colors">Contact</a>
             </div>
             <button id="mobile-menu-btn" class="md:hidden text-white">
@@ -83,7 +82,6 @@
             <a href="index.html" class="block text-brand-subtext hover:text-white transition-colors">Home</a>
             <a href="projects.html" class="block text-white transition-colors">Projects</a>
             <a href="about.html" class="block text-brand-subtext hover:text-white transition-colors">About</a>
-            <a href="blog/index.html" class="block text-brand-subtext hover:text-white transition-colors">Blog</a>
             <a href="index.html#contact" class="block text-brand-subtext hover:text-white transition-colors">Contact</a>
         </div>
     </header>
@@ -98,90 +96,59 @@
             </p>
         </section>
 
-        <!-- Featured Projects -->
+        <!-- Featured Project -->
         <section class="mb-20">
-            <h2 class="text-2xl font-bold text-white mb-8">Featured Projects</h2>
+            <h2 class="text-2xl font-bold text-white mb-8">Featured Project</h2>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Build System Stabilization -->
-                <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
-                    <div class="mb-3">
-                        <h3 class="text-lg font-semibold text-white">CI/CD Infrastructure Stabilization</h3>
-                    </div>
-                    <p class="text-sm text-brand-subtext mb-3">
-                        Stabilized failing build infrastructure through systematic fixes including caching architecture and infrastructure migration. Recognized by leadership for impact.
-                    </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-sky-900/50 text-sky-300 text-xs px-2 py-1 rounded-full">Jenkins</span>
-                        <span class="bg-sky-900/50 text-sky-300 text-xs px-2 py-1 rounded-full">Docker</span>
-                        <span class="bg-sky-900/50 text-sky-300 text-xs px-2 py-1 rounded-full">AWS</span>
-                        <span class="bg-sky-900/50 text-sky-300 text-xs px-2 py-1 rounded-full">Infrastructure</span>
-                    </div>
-                </div>
-
-                <!-- Test Analytics Platform -->
-                <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
-                    <div class="mb-3">
-                        <h3 class="text-lg font-semibold text-white">Test Analytics Platform</h3>
-                    </div>
-                    <p class="text-sm text-brand-subtext mb-3">
-                        Full-stack platform automating test health monitoring and failure analysis. Multi-year production use, became critical team infrastructure.
-                    </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-sky-900/50 text-sky-300 text-xs px-2 py-1 rounded-full">Angular</span>
-                        <span class="bg-sky-900/50 text-sky-300 text-xs px-2 py-1 rounded-full">Django</span>
-                        <span class="bg-sky-900/50 text-sky-300 text-xs px-2 py-1 rounded-full">MongoDB</span>
-                        <span class="bg-sky-900/50 text-sky-300 text-xs px-2 py-1 rounded-full">Analytics</span>
-                    </div>
-                </div>
-
-                <!-- Framework Migration -->
-                <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
-                    <div class="mb-3">
-                        <h3 class="text-lg font-semibold text-white">Test Framework Migration</h3>
-                    </div>
-                    <p class="text-sm text-brand-subtext mb-3">
-                        Led migration from deprecated framework to modern tooling. Completed long-stalled initiative, unblocking team and enabling ecosystem upgrades.
-                    </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-sky-900/50 text-sky-300 text-xs px-2 py-1 rounded-full">Selenium</span>
-                        <span class="bg-sky-900/50 text-sky-300 text-xs px-2 py-1 rounded-full">WebDriverJS</span>
-                        <span class="bg-sky-900/50 text-sky-300 text-xs px-2 py-1 rounded-full">Migration</span>
-                    </div>
+            <div class="bg-gradient-to-r from-brand-accent/10 to-sky-500/10 p-8 rounded-xl border border-brand-accent/30">
+                <h3 class="text-2xl font-bold text-white mb-4">AI-Powered Test Generation Platform</h3>
+                <p class="text-brand-subtext mb-6 text-lg">
+                    Architected conversational IDE using RAG system with domain-specific knowledge. Experimental platform reducing test creation time by 80% through natural language workflows and intelligent code generation.
+                </p>
+                <ul class="space-y-3 text-brand-subtext mb-6">
+                    <li class="flex items-start">
+                        <svg class="w-6 h-6 text-brand-accent mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <span>AWS Bedrock integration with Claude for custom agent workflows handling data generation, test creation, and integration</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-6 h-6 text-brand-accent mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <span>Dual-context RAG architecture combining production codebase patterns with branch-specific context</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-6 h-6 text-brand-accent mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <span>Domain-specific knowledge base ingesting Django models, test patterns, and framework conventions</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-6 h-6 text-brand-accent mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <span>Conversational workflows with custom commands enabling specialized task automation</span>
+                    </li>
+                </ul>
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1.5 rounded-full">Python</span>
+                    <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1.5 rounded-full">AWS Bedrock</span>
+                    <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1.5 rounded-full">RAG</span>
+                    <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1.5 rounded-full">Claude</span>
+                    <span class="bg-sky-900/50 text-sky-300 text-sm font-medium px-3 py-1.5 rounded-full">Playwright</span>
                 </div>
             </div>
         </section>
 
-        <!-- AI & Platform Engineering -->
+        <!-- Platform Engineering -->
         <section class="mb-20">
-            <h2 class="text-2xl font-bold text-white mb-8">AI & Platform Engineering</h2>
+            <h2 class="text-2xl font-bold text-white mb-8">Platform Engineering</h2>
 
             <div class="space-y-6">
-                <!-- AI Test Generation Platform -->
+                <!-- Test Analytics Platform -->
                 <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
-                    <h3 class="text-xl font-semibold text-white mb-3">AI-Powered Test Generation Platform</h3>
+                    <h3 class="text-xl font-semibold text-white mb-3">Test Analytics & Monitoring Platform</h3>
                     <p class="text-brand-subtext mb-4">
-                        Architected conversational IDE using RAG system with domain-specific knowledge. Experimental platform for accelerating test creation through natural language workflows.
+                        Full-stack platform automating test health monitoring and failure analysis. Eliminated 40+ hours/week of manual work, running in production for 2+ years as critical team infrastructure.
                     </p>
-                    <ul class="space-y-2 text-sm text-brand-subtext mb-4">
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-brand-accent mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            <span>LLM SDK integration with custom agent workflows</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-brand-accent mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            <span>Dual-context RAG architecture for intelligent code generation</span>
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-brand-accent mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            <span>Custom knowledge base with codebase patterns and domain models</span>
-                        </li>
-                    </ul>
                     <div class="flex flex-wrap gap-2">
-                        <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-2 py-1 rounded-full">Python</span>
-                        <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-2 py-1 rounded-full">RAG</span>
-                        <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-2 py-1 rounded-full">LLM Integration</span>
-                        <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-2 py-1 rounded-full">Test Automation</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-2 py-1 rounded-full">Angular</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-2 py-1 rounded-full">Django</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-2 py-1 rounded-full">MongoDB</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-2 py-1 rounded-full">Analytics</span>
                     </div>
                 </div>
 
@@ -205,6 +172,20 @@
                             <h4 class="font-semibold text-brand-accent mb-2">Test Data Platform Redesign</h4>
                             <p class="text-sm text-brand-subtext">Re-architected test data generation away from complex API approach, reducing maintenance overhead and improving performance.</p>
                         </div>
+                    </div>
+                </div>
+
+                <!-- CI/CD Infrastructure -->
+                <div class="bg-brand-light p-6 rounded-xl border border-brand-light/50">
+                    <h3 class="text-xl font-semibold text-white mb-3">CI/CD Infrastructure Stabilization</h3>
+                    <p class="text-brand-subtext mb-4">
+                        Stabilized failing build infrastructure through systematic fixes including caching architecture and infrastructure migration. Recognized by leadership for impact, led to formation of dedicated DevOps team.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-2 py-1 rounded-full">Jenkins</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-2 py-1 rounded-full">Docker</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-2 py-1 rounded-full">AWS</span>
+                        <span class="bg-sky-900/50 text-sky-300 text-xs font-medium px-2 py-1 rounded-full">Infrastructure</span>
                     </div>
                 </div>
             </div>
